@@ -405,9 +405,9 @@
                                                 <div class="avatar-group">
                                                     <div class="avatar-group-item">
                                                         <a href="javascript: void(0);" class="d-inline-block">
-                                                            <img src="assets/images/users/avatar-4.jpg" alt="" class="rounded-circle avatar-xs">
+                                                            <img src="{{asset(Storage::url($project->worker->image))}}" alt="" class="rounded-circle avatar-xs">
                                                         </a>
-                                                    </div>                                                    
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

@@ -31,3 +31,7 @@ Route::get('/',[App\Http\Controllers\MainController::class,'index']);
 
 
 Route::resource('projects', App\Http\Controllers\ProjectsController::class);
+
+Route::resource('orders', App\Http\Controllers\OrdersController::class);
+
+Route::resource('member', App\Http\Controllers\OrdersController::class);

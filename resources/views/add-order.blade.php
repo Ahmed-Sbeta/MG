@@ -40,19 +40,19 @@
                         <div class="navbar-brand-box">
                             <a href="index.html" class="logo logo-dark">
                                 <span class="logo-sm">
-                                    <img src="assets/images/logo.svg" alt="" height="22">
+                                    <img src="{{asset('assets/images/logo.svg')}}" alt="" height="22">
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="assets/images/logo-dark.png" alt="" height="17">
+                                    <img src="{{asset('assets/images/logo-dark.png')}}" alt="" height="17">
                                 </span>
                             </a>
 
                             <a href="index.html" class="logo logo-light">
                                 <span class="logo-sm">
-                                    <img src="assets/images/logo-light.svg" alt="" height="22">
+                                    <img src="{{asset('assets/images/logo-light.svg')}}" alt="" height="22">
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="assets/images/logo-light.png" alt="" height="50">
+                                    <img src="{{asset('assets/images/logo-light.png')}}" alt="" height="50">
                                 </span>
                             </a>
                         </div>
@@ -389,7 +389,8 @@
                                         <h4 class="card-title">Basic Information</h4>
                                         <p class="card-title-desc">Fill all information below</p>
 
-                                        <form>
+                                        <form action="{{route('orders.store')}}" enctype="multipart/form-data" method="post">
+                                          @csrf
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="mb-3">
@@ -410,22 +411,22 @@
                                                 <div class="col-sm-6">
                                                     <div class="mb-3">
                                                         <label class="control-label">Service Type</label>
-                                                        <select class="form-control select">
+                                                        <select class="form-control select" name="Service">
                                                             <option>Select</option>
-                                                            <option  >Visual Identity Design </option>
-                                                            <option value="EL">Content Writing</option>
-                                                            <option  >Graphic Design </option>
-                                                            <option  >Web Desgin </option>
-                                                            <option  >Billboard Design </option>
-                                                            <option  >Animation </option>
-                                                            <option  > product photography  </option>
+                                                            <option  value="Visual Identity Design">Visual Identity Design </option>
+                                                            <option value="Content Writing">Content Writing</option>
+                                                            <option  value="Graphic Design">Graphic Design </option>
+                                                            <option  value="Web Desgin">Web Desgin </option>
+                                                            <option  value="Billboard Design">Billboard Design </option>
+                                                            <option  value="Animation">Animation </option>
+                                                            <option  value="product photography"> product photography  </option>
 
                                                         </select>
                                                     </div>
 
                                                     <div class="mb-3">
                                                         <label for="productdesc">Product Description</label>
-                                                        <textarea class="form-control" id="productdesc" rows="6" placeholder="Product Description"></textarea>
+                                                        <textarea class="form-control" name="description" id="productdesc" rows="6" placeholder="Product Description"></textarea>
                                                     </div>
 
                                                 </div>
@@ -435,31 +436,27 @@
                                                 <button type="submit" class="btn btn-primary waves-effect waves-light">Save Changes</button>
                                                 <button type="button" class="btn btn-secondary waves-effect waves-light">Cancel</button>
                                             </div> -->
-                                        </form>
 
-                                    </div>
-                                </div>
 
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title mb-3">Suggested Ideas</h4>
+                                            <div class="card">
+                                              <div class="card-body">
+                                                <h4 class="card-title mb-3">Suggested Ideas</h4>
 
-                                        <form action="/" method="post" class="dropzone">
-                                            <div class="fallback">
-                                                <input name="file" type="file" multiple />
-                                            </div>
+                                                  <div class="fallback">
+                                                    <input name="file" type="file" multiple />
+                                                  </div>
 
-                                            <div class="dz-message needsclick">
-                                                <div class="mb-3">
-                                                    <i class="display-4 text-muted bx bxs-cloud-upload"></i>
-                                                </div>
+                                                  <div class="dz-message needsclick">
+                                                    <div class="mb-3">
+                                                      <i class="display-4 text-muted bx bxs-cloud-upload"></i>
+                                                    </div>
 
-                                                <h4>Drop files here or click to upload.</h4>
-                                            </div>
-                                        </form>
-                                    </div>
+                                                    <h4>Drop files here or click to upload.</h4>
+                                                  </div>
+                                              </div>
 
-                                </div> <!-- end card-->
+                                            </div> <!-- end card-->
+
 
                                 <div class="card">
                                     <div class="card-body">
@@ -467,14 +464,13 @@
                                         <h4 class="card-title">Payment Method</h4>
                                         <p class="card-title-desc">Choose the payment method that suits you</p>
 
-                                        <form>
                                             <div class="row">
                                                 <div class="col-sm-6">
 
 
                                                         <div class="mb-3">
                                                             <label class="control-label">Payment Method :</label>
-                                                            <select class="form-control select">
+                                                            <select class="form-control select" name="payment">
                                                                 <option>Select</option>
                                                                 <option  >Cash </option>
                                                                 <option value="EL">Sadaad</option>
@@ -487,19 +483,22 @@
                                                 <div class="col-sm-6">
                                                     <div class="mb-3">
                                                         <label for="metadescription">Notes :  </label>
-                                                        <textarea class="form-control" id="metadescription" rows="5" placeholder="Meta Description"></textarea>
+                                                        <textarea class="form-control" id="metadescription" name="note" rows="5" placeholder="Meta Description"></textarea>
                                                     </div>
                                                 </div>
                                             </div>
 
                                             <div class="d-flex flex-wrap gap-2">
                                                 <button type="submit" class="btn btn-primary waves-effect waves-light">Done</button>
-                                                <button type="submit" class="btn btn-secondary waves-effect waves-light">Update</button>
+                                                <!-- <button type="submit" class="btn btn-secondary waves-effect waves-light">Update</button> -->
                                             </div>
-                                        </form>
 
                                     </div>
                                 </div>
+                              </form>
+
+                          </div>
+                      </div>
                             </div>
                         </div>
                         <!-- end row -->

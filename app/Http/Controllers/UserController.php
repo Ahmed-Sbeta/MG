@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\project;
+use App\Models\User;
 
-class ProjectsController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        $projects = project::with('Worker')->get();
-        return view('projects-grid',compact('projects'));
+        $users = User::all();
+        return view('contacts-list');
     }
 
     /**
@@ -25,7 +25,7 @@ class ProjectsController extends Controller
      */
     public function create()
     {
-        return view('createP');
+        return view('add-member');
     }
 
     /**
@@ -36,15 +36,14 @@ class ProjectsController extends Controller
      */
     public function store(Request $request)
     {
-        $project = new project;
-        $project->name= request('Pname');
-        $project->description = request('Pdescription');
-        $project->employer_id = 1;
-        $project->start = request('startDate');
-        $project->end = request('endDate');
-        $project->file = request('file');
-        $project->save();
-        return redirect('/');
+        // $user = new User;
+        // $user->name =
+        // $user->emsil =
+        // $user->password =
+        // $user->role =
+        // $user->image =
+        // $user->save();
+        // return redirect()->back()->with('success','User added successfuly');
     }
 
     /**

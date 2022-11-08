@@ -25,6 +25,7 @@ class MainController extends Controller
       $user->name = request('name');
       $user->email = request('email');
       $user->role = "user";
+      $user->image = "download.png";
       $password = request('password');
       $passwordConfirmation = request('confirmPassword');
       if($password == $passwordConfirmation){

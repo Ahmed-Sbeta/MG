@@ -610,7 +610,7 @@
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="mb-3">
-                                                        <label for="fullname">Full Name</label>
+                                                        <label for="fullname">Full nnnnName</label>
                                                         <input id="fullname" name="fullname" type="text" class="form-control" placeholder="Full Name">
                                                     </div>
                                                     <div class="mb-3">

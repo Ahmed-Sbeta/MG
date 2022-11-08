@@ -13,6 +13,7 @@
 
         <link href="{{ asset('assets/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css')}}" rel="stylesheet">
 
+
         <!-- dropzone css -->
         <link href="{{asset('assets/libs/dropzone/min/dropzone.min.css')}}" rel="stylesheet" type="text/css" />
 
@@ -23,6 +24,8 @@
         <!-- App Css-->
         <link href="{{asset('assets/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
 
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     </head>
 
     <body data-sidebar="dark">
@@ -393,8 +396,11 @@
                                             <div class="row mb-4">
                                                 <label for="projectname" class="col-form-label col-lg-2">Employee account</label>
                                                 <div class="col-lg-10">
-                                                    <input id="projectname" name="Ename" type="text" class="form-control" placeholder="Enter Employee account...">
-                                                </div>
+                                                  <select class="contributors form-control multiple-select" name="contributors[]" multiple="multiple">
+                                                    <option value="AL">Alabama</option>
+
+                                                    <option value="WY">Wyoming</option>
+                                                  </select>                                                </div>
                                             </div>
                                             <div class="row mb-4">
                                                 <label for="projectname" class="col-form-label col-lg-2">Project Name</label>
@@ -554,6 +560,11 @@
         <script src="{{asset('assets/libs/dropzone/min/dropzone.min.js')}}"></script>
 
         <script src="{{asset('assets/js/app.js')}}"></script>
+        <script type="text/javascript">
+        $(document).ready(function() {
+          $('.contributors').select2();
+        });
+        </script>
 
     </body>
 </html>

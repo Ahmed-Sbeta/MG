@@ -407,8 +407,8 @@
                                                         </th>
                                                         <th class="align-middle">Order ID</th>
                                                         <th class="align-middle">Full Name</th>
-                                                        <th class="align-middle">Date</th>
-                                                        <th class="align-middle">Total</th>
+                                                        <th class="align-middle">Service</th>
+                                                        <th class="align-middle">brand</th>
                                                         <th class="align-middle">Payment Status</th>
                                                         <th class="align-middle">Payment Method</th>
                                                         <th class="align-middle">View Details</th>
@@ -416,6 +416,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                  @foreach($orders as $order)
                                                     <tr>
                                                         <td>
                                                             <div class="form-check font-size-16">
@@ -423,13 +424,13 @@
                                                                 <label class="form-check-label" for="orderidcheck01"></label>
                                                             </div>
                                                         </td>
-                                                        <td><a href="javascript: void(0);" class="text-body fw-bold">#SK2540</a> </td>
-                                                        <td>Mohamed Gomati</td>
+                                                        <td><a href="javascript: void(0);" class="text-body fw-bold">{{$order->id}}</a> </td>
+                                                        <td>{{$order->name}}</td>
                                                         <td>
-                                                            03 AUG, 2022
+                                                            {{$order->service}}
                                                         </td>
                                                         <td>
-                                                            $150
+                                                            {{$order->brand}}
                                                         </td>
                                                         <td>
                                                             <span class="badge badge-pill badge-soft-success font-size-12">Paid</span>
@@ -450,6 +451,7 @@
                                                             </div>
                                                         </td>
                                                     </tr>
+                                                    @endforeach
 
                                                 </tbody>
                                             </table>
