@@ -18,11 +18,11 @@ class CreateOrdersTable extends Migration
             $table->string('name');
             $table->string('service');
             $table->string('phoneNumber');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->string('brand');
-            $table->string('payment');
-            $table->string('note');
-            $table->string('file');
+            $table->string('payment')->nullable();
+            $table->string('note')->nullable();
+            $table->string('file')->nullable();
             $table->timestamps();
         });
     }
