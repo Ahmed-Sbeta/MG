@@ -20,7 +20,7 @@ class CreateProjectsTable extends Migration
             $table->integer("employer_id")->references('id')->on('users');
             $table->string('start');
             $table->string('End');
-            $table->string('file');
+            $table->string('file')->nullable();
             $table->string('status')->default('Pending');
             $table->timestamps();
         });

@@ -39,12 +39,12 @@ class ProjectsController extends Controller
         $project = new project;
         $project->name= request('Pname');
         $project->description = request('Pdescription');
-        $project->employer_id = 1;
+        $project->employer_id = request('employee')[0];
         $project->start = request('startDate');
         $project->end = request('endDate');
         $project->file = request('file');
         $project->save();
-        return redirect('/');
+        return redirect()->back()->with('success','project added successfuly');
     }
 
     /**

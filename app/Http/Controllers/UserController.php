@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -36,14 +37,23 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        // $user = new User;
-        // $user->name =
-        // $user->emsil =
-        // $user->password =
-        // $user->role =
-        // $user->image =
-        // $user->save();
-        // return redirect()->back()->with('success','User added successfuly');
+        $user = new User;
+        $user->name = request('name');
+        $user->email = request('email');
+        $user->role = 'employee';
+        $user->job = request('job');
+        $user->phoneNumber = request('phoneNumber');
+        $user->image = request('image');
+        $password = request('password');
+        $passwordConfirmation = request('confirmPassword');
+        if($password == $passwordConfirmation){
+          $user->password =  Hash::make($password);
+          $user->save();
+        }else{
+          //error
+          return redirect()->back()->with('error','password not matched');
+        }
+        return redirect()->back()->with('success','User added successfuly');
     }
 
     /**
