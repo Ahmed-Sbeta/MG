@@ -15,6 +15,7 @@ class ProjectsController extends Controller
     public function index()
     {
         $projects = project::with('Worker')->get();
+        // dd($projects);
         return view('projects-grid',compact('projects'));
     }
 
@@ -42,7 +43,10 @@ class ProjectsController extends Controller
         $project->employer_id = request('employee')[0];
         $project->start = request('startDate');
         $project->end = request('endDate');
-        $project->file = request('file');
+        $file = request()->file('file');
+        $name = $file->getClientOriginalName();
+        $name = str_replace(' ', '', $name);
+        $project->file = request()->file('file') ? request()->file('file')->storePubliclyAs('',$name) : null;
         $project->save();
         return redirect()->back()->with('success','project added successfuly');
     }

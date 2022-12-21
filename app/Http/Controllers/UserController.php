@@ -43,7 +43,12 @@ class UserController extends Controller
         $user->role = 'employee';
         $user->job = request('job');
         $user->phoneNumber = request('phoneNumber');
-        $user->image = request('image');
+        //image
+        $file = request()->file('image');
+        $name = $file->getClientOriginalName();
+        $name = str_replace(' ', '', $name);
+        $user->image = request()->file('image') ? request()->file('image')->storePubliclyAs('',$name) : null;
+
         $password = request('password');
         $passwordConfirmation = request('confirmPassword');
         if($password == $passwordConfirmation){
