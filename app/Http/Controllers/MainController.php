@@ -13,11 +13,11 @@ class MainController extends Controller
     }
 
     public function login(){
-      return view('auth-login');
+      return view('user.auth-login');
     }
 
     public function register(){
-      return view('auth-register');
+      return view('user.auth-register');
     }
 
     public function registration(){

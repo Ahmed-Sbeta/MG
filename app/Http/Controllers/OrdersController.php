@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\orders;
+use Auth;
 
 class OrdersController extends Controller
 {
@@ -15,7 +16,7 @@ class OrdersController extends Controller
     public function index()
     {
         $orders = orders::all();
-        return view('orders',compact('orders'));
+        return view('orders.orders',compact('orders'));
     }
 
     /**
@@ -25,7 +26,9 @@ class OrdersController extends Controller
      */
     public function create()
     {
-        return view('add-order');
+        // $d = Auth::user()->name;
+        // dd(Auth::id());
+        return view('orders.add-order');
     }
 
     /**
@@ -61,7 +64,7 @@ class OrdersController extends Controller
     public function show($id)
     {
         $order = orders::find($id);
-        return view('order-details',compact('order'));
+        return view('orders.order-details',compact('order'));
     }
 
     /**
@@ -73,7 +76,7 @@ class OrdersController extends Controller
     public function edit($id)
     {
         $order = orders::find($id);
-        return view('order-edit',compact('order'));
+        return view('orders.order-edit',compact('order'));
     }
 
     /**
@@ -91,14 +94,16 @@ class OrdersController extends Controller
         $order->phoneNumber = request('phonenumber');
         $order->description = request('description');
         $order->brand = request('manufacturerbrand');
-        $file = request()->file('file');
-        $name = $file->getClientOriginalName();
-        $name = str_replace(' ', '', $name);
-        $order->file = request()->file('file') ? request()->file('file')->storePubliclyAs('',$name) : null;
+        if(request('file')){
+          $file = request()->file('file');
+          $name = $file->getClientOriginalName();
+          $name = str_replace(' ', '', $name);
+          $order->file = request()->file('file') ? request()->file('file')->storePubliclyAs('',$name) : null;
+        }
         $order->payment = request('payment');
         $order->note = request('note');
         $order->save();
-        return redirect()->back()->with('success','your order was sent seccussfuly');
+        return redirect()->back()->with('success','order is updated seccussfuly');
     }
 
     /**
@@ -111,6 +116,6 @@ class OrdersController extends Controller
     {
         $order = orders::find($id);
         $order->delete();
-        return redirect()->back()->with('success','your order was sent seccussfuly');
+        return redirect()->back()->with('success','order is deleted seccussfuly');
     }
 }

@@ -4,17 +4,12 @@
     <head>
 
         <meta charset="utf-8" />
-        <title>Project Grid - MAWJA</title>
+        <title>Orders - MAWJA</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesbrand" name="author" />
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{asset('assets/images/mawja22.png')}}">
-
-        <link href="{{asset('assets/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css')}}" rel="stylesheet">
-
-        <!-- dropzone css -->
-        <link href="{{asset('assets/libs/dropzone/min/dropzone.min.css')}}" rel="stylesheet" type="text/css" />
 
         <!-- Bootstrap Css -->
         <link href="{{asset('assets/css/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
@@ -61,13 +56,8 @@
                             <i class="fa fa-fw fa-bars"></i>
                         </button>
 
-                        <!-- App Search-->
-                        <form class="app-search d-none d-lg-block">
-                            <div class="position-relative">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="bx bx-search-alt"></span>
-                            </div>
-                        </form>
+
+
 
 
                     </div>
@@ -94,8 +84,6 @@
                                 </form>
                             </div>
                         </div>
-
-
 
                         <div class="dropdown d-none d-lg-inline-block ms-1">
                             <button type="button" class="btn header-item noti-icon waves-effect" data-bs-toggle="fullscreen">
@@ -218,6 +206,7 @@
                     </div>
                 </div>
             </header>
+
             <!-- ========== Left Sidebar Start ========== -->
             @include('layout.sidebar')
             <!-- Left Sidebar End -->
@@ -236,12 +225,11 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                    <h4 class="mb-sm-0 font-size-18">Projects Grid</h4>
-
+                                    <h4 class="mb-sm-0 font-size-18">Orders</h4>
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Projects</a></li>
-                                            <li class="breadcrumb-item active">Projects Grid</li>
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Ecommerce</a></li>
+                                            <li class="breadcrumb-item active">Orders</li>
                                         </ol>
                                     </div>
 
@@ -251,83 +239,119 @@
                         <!-- end page title -->
 
                         <div class="row">
-                          @foreach($projects as $project)
-                            <div class="col-xl-4 col-sm-6">
+                            <div class="col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <div class="d-flex">
-                                            <div class="flex-shrink-0 me-4">
-                                                <div class="avatar-md">
-                                                    <span class="avatar-title rounded-circle bg-light text-danger font-size-16">
-                                                        <img src="{{asset('assets/images/companies/img-1.png')}}" alt="" height="30">
-                                                    </span>
-                                                </div>
-                                            </div>
-
-                                            <div class="flex-grow-1 overflow-hidden">
-                                                <h5 class="text-truncate font-size-15"><a href="javascript: void(0);" class="text-dark">{{$project->name}}</a></h5>
-                                                <p class="text-muted mb-4">{{$project->description}}</p>
-                                                <div class="avatar-group">
-                                                    <div class="avatar-group-item">
-                                                        <a href="javascript: void(0);" class="d-inline-block">
-                                                            <img src="{{asset(Storage::url($project->Worker->image))}}" alt="" class="rounded-circle avatar-xs">
-                                                        </a>
+                                        <div class="row mb-2">
+                                            <div class="col-sm-4">
+                                                <div class="search-box me-2 mb-2 d-inline-block">
+                                                    <div class="position-relative">
+                                                        <input type="text" class="form-control" placeholder="Search...">
+                                                        <i class="bx bx-search-alt search-icon"></i>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="col-sm-8">
+                                                <div class="text-sm-end">
+                                                    <a href="/orders/create" type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 me-2"><i class="mdi mdi-plus me-1"></i> Add New Order</a>
+                                                </div>
+                                            </div><!-- end col-->
                                         </div>
-                                    </div>
-                                    <div class="px-4 py-3 border-top">
-                                        <ul class="list-inline mb-0">
-                                            <li class="list-inline-item me-3">
-                                                <span class="badge bg-success">{{$project->status}}</span>
+
+                                        <div class="table-responsive">
+                                            <table class="table align-middle table-nowrap table-check">
+                                                <thead class="table-light">
+                                                    <tr>
+                                                        <th style="width: 20px;" class="align-middle">
+                                                            <div class="form-check font-size-16">
+                                                                <input class="form-check-input" type="checkbox" id="checkAll">
+                                                                <label class="form-check-label" for="checkAll"></label>
+                                                            </div>
+                                                        </th>
+                                                        <th class="align-middle">Order ID</th>
+                                                        <th class="align-middle">Full Name</th>
+                                                        <th class="align-middle">Service</th>
+                                                        <th class="align-middle">brand</th>
+                                                        <th class="align-middle">Payment Status</th>
+                                                        <th class="align-middle">Payment Method</th>
+                                                        <th class="align-middle">View Details</th>
+                                                        <th class="align-middle">Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                  @foreach($orders as $order)
+                                                    <tr>
+                                                        <td>
+                                                            <div class="form-check font-size-16">
+                                                                <input class="form-check-input" type="checkbox" id="orderidcheck01">
+                                                                <label class="form-check-label" for="orderidcheck01"></label>
+                                                            </div>
+                                                        </td>
+                                                        <td><a href="javascript: void(0);" class="text-body fw-bold">{{$order->id}}</a> </td>
+                                                        <td>{{$order->name}}</td>
+                                                        <td>
+                                                            {{$order->service}}
+                                                        </td>
+                                                        <td>
+                                                            {{$order->brand}}
+                                                        </td>
+                                                        <td>
+                                                            <span class="badge badge-pill badge-soft-success font-size-12">Paid</span>
+                                                        </td>
+                                                        <td>
+                                                            <i class="fas fa-money-bill-alt me-1"></i> Cash
+                                                        </td>
+                                                        <td>
+                                                            <!-- Button trigger modal -->
+                                                            <a href="/orders/{{$order->id}}" type="button" class="btn btn-primary btn-sm btn-rounded" >
+                                                                View Details
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex gap-3">
+                                                                <a href="/orders/{{$order->id}}/edit" class="text-success"><i class="mdi mdi-pencil font-size-18"></i></a>
+                                                                <form class="" action="{{route('orders.destroy',[$order->id])}}" method="post">
+                                                                  @csrf
+                                                                  @method('delete')
+                                                                  <button style="border: none; background: none;" type="submit" class="text-danger"><i class="mdi mdi-delete font-size-18"></i></button>
+
+                                                                </form>
+
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    @endforeach
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <ul class="pagination pagination-rounded justify-content-end mb-2">
+                                            <li class="page-item disabled">
+                                                <a class="page-link" href="javascript: void(0);" aria-label="Previous">
+                                                    <i class="mdi mdi-chevron-left"></i>
+                                                </a>
                                             </li>
-                                            <li class="list-inline-item me-3">
-                                                <i class= "bx bx-calendar me-1"></i>{{$project->End}}
-                                            </li>
-                                            <li class="list-inline-item me-3">
-                                                <i class= "bx bx-comment-dots me-1"></i> 0
+                                            <li class="page-item active"><a class="page-link" href="javascript: void(0);">1</a></li>
+                                            <li class="page-item"><a class="page-link" href="javascript: void(0);">2</a></li>
+                                            <li class="page-item"><a class="page-link" href="javascript: void(0);">3</a></li>
+                                            <li class="page-item"><a class="page-link" href="javascript: void(0);">4</a></li>
+                                            <li class="page-item"><a class="page-link" href="javascript: void(0);">5</a></li>
+                                            <li class="page-item">
+                                                <a class="page-link" href="javascript: void(0);" aria-label="Next">
+                                                    <i class="mdi mdi-chevron-right"></i>
+                                                </a>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
-                            @endforeach
                         </div>
                         <!-- end row -->
-
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <ul class="pagination pagination-rounded justify-content-center mt-2 mb-5">
-                                    <li class="page-item disabled">
-                                        <a href="javascript: void(0);" class="page-link"><i class="mdi mdi-chevron-left"></i></a>
-                                    </li>
-                                    <li class="page-item">
-                                        <a href="javascript: void(0);" class="page-link">1</a>
-                                    </li>
-                                    <li class="page-item active">
-                                        <a href="javascript: void(0);" class="page-link">2</a>
-                                    </li>
-                                    <li class="page-item">
-                                        <a href="javascript: void(0);" class="page-link">3</a>
-                                    </li>
-                                    <li class="page-item">
-                                        <a href="javascript: void(0);" class="page-link">4</a>
-                                    </li>
-                                    <li class="page-item">
-                                        <a href="javascript: void(0);" class="page-link">5</a>
-                                    </li>
-                                    <li class="page-item">
-                                        <a href="javascript: void(0);" class="page-link"><i class="mdi mdi-chevron-right"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- end row -->
-
                     </div> <!-- container-fluid -->
                 </div>
                 <!-- End Page-content -->
+
+
 
 
                 <footer class="footer">
@@ -417,6 +441,7 @@
         <script src="{{asset('assets/libs/simplebar/simplebar.min.js')}}"></script>
         <script src="{{asset('assets/libs/node-waves/waves.min.js')}}"></script>
 
+        <!-- App js -->
         <script src="{{asset('assets/js/app.js')}}"></script>
 
     </body>

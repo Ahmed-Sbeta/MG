@@ -4,12 +4,17 @@
     <head>
 
         <meta charset="utf-8" />
-        <title>Orders - MAWJA</title>
+        <title>Service Request - MAWJA</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesbrand" name="author" />
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{asset('assets/images/mawja22.png')}}">
+
+        <link href="{{asset('assets/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css')}}" rel="stylesheet">
+
+        <!-- dropzone css -->
+        <link href="{{asset('assets/libs/dropzone/min/dropzone.min.css')}}" rel="stylesheet" type="text/css" />
 
         <!-- Bootstrap Css -->
         <link href="{{asset('assets/css/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
@@ -35,19 +40,19 @@
                         <div class="navbar-brand-box">
                             <a href="index.html" class="logo logo-dark">
                                 <span class="logo-sm">
-                                    <img src="assets/images/logo.svg" alt="" height="22">
+                                    <img src="{{asset('assets/images/logo.svg')}}" alt="" height="22">
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="assets/images/logo-dark.png" alt="" height="17">
+                                    <img src="{{asset('assets/images/logo-dark.png')}}" alt="" height="17">
                                 </span>
                             </a>
 
                             <a href="index.html" class="logo logo-light">
                                 <span class="logo-sm">
-                                    <img src="assets/images/logo-light.svg" alt="" height="22">
+                                    <img src="{{asset('assets/images/logo-light.svg')}}" alt="" height="22">
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="assets/images/logo-light.png" alt="" height="50">
+                                    <img src="{{asset('assets/images/logo-light.png')}}" alt="" height="50">
                                 </span>
                             </a>
                         </div>
@@ -55,7 +60,6 @@
                         <button type="button" class="btn btn-sm px-3 font-size-16 header-item waves-effect" id="vertical-menu-btn">
                             <i class="fa fa-fw fa-bars"></i>
                         </button>
-
 
 
 
@@ -84,6 +88,8 @@
                                 </form>
                             </div>
                         </div>
+
+
 
                         <div class="dropdown d-none d-lg-inline-block ms-1">
                             <button type="button" class="btn header-item noti-icon waves-effect" data-bs-toggle="fullscreen">
@@ -181,7 +187,7 @@
                         <div class="dropdown d-inline-block">
                             <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-1.jpg"
+                                <img class="rounded-circle header-profile-user" src="{{asset('assets/images/users/avatar-1.jpg')}}"
                                     alt="Header Avatar">
                                 <span class="d-none d-xl-inline-block ms-1" key="t-henry">Henry</span>
                                 <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
@@ -225,11 +231,12 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                    <h4 class="mb-sm-0 font-size-18">Orders</h4>
+                                    <h4 class="mb-sm-0 font-size-18">Service Request</h4>
+
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Ecommerce</a></li>
-                                            <li class="breadcrumb-item active">Orders</li>
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);"> Services</a></li>
+                                            <li class="breadcrumb-item active">Service Request</li>
                                         </ol>
                                     </div>
 
@@ -242,194 +249,134 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <div class="row mb-2">
-                                            <div class="col-sm-4">
-                                                <div class="search-box me-2 mb-2 d-inline-block">
-                                                    <div class="position-relative">
-                                                        <input type="text" class="form-control" placeholder="Search...">
-                                                        <i class="bx bx-search-alt search-icon"></i>
+
+                                        <h4 class="card-title">Basic Information</h4>
+                                        @include('layout.message')
+
+                                        <p class="card-title-desc">Fill all information below</p>
+
+                                        <form action="{{route('orders.update',[$order->id])}}" enctype="multipart/form-data" method="post">
+                                          @csrf
+                                          @Method('PATCH')
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="mb-3">
+                                                        <label for="fullname">Full Name</label>
+                                                        <input id="fullname" name="fullname" type="text" class="form-control" placeholder="Full Name" value="{{$order->name}}">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="phonenumber">Phone Number</label>
+                                                        <input id="phonenumber" name="phonenumber" type="text" class="form-control" placeholder="09* *** ** **" value="{{$order->phoneNumber}}">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="manufacturerbrand">Manufacturer Brand</label>
+                                                        <input id="manufacturerbrand" name="manufacturerbrand" type="text" class="form-control" placeholder="Manufacturer Brand" value="{{$order->brand}}">
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-sm-6">
+                                                    <div class="mb-3">
+                                                        <label class="control-label">Service Type</label>
+                                                        <select class="form-control select" name="Service">
+                                                            <option value="{{$order->service}}">{{$order->service}}</option>
+                                                            <option  value="Visual Identity Design">Visual Identity Design </option>
+                                                            <option value="Content Writing">Content Writing</option>
+                                                            <option  value="Graphic Design">Graphic Design </option>
+                                                            <option  value="Web Desgin">Web Desgin </option>
+                                                            <option  value="Billboard Design">Billboard Design </option>
+                                                            <option  value="Animation">Animation </option>
+                                                            <option  value="product photography"> product photography  </option>
+
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="mb-3">
+                                                        <label for="productdesc">Product Description</label>
+                                                        <textarea class="form-control" name="description" value="{{$order->description}}" id="productdesc" rows="6" placeholder="Product Description">{{$order->description}}</textarea>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <!-- <div class="d-flex flex-wrap gap-2">
+                                                <button type="submit" class="btn btn-primary waves-effect waves-light">Save Changes</button>
+                                                <button type="button" class="btn btn-secondary waves-effect waves-light">Cancel</button>
+                                            </div> -->
+
+
+                                            <div class="card">
+                                              <div class="card-body">
+                                                <h4 class="card-title mb-3">Suggested Ideas</h4>
+
+                                                  <div class="fallback">
+                                                    @if($order->file)
+                                                      <input name="file" type="file" multiple value="{{$order->file}}"/>
+                                                    @else
+                                                      <input name="file" type="file" multiple/>
+
+                                                    @endif
+                                                  </div>
+
+                                                  <div class="dz-message needsclick">
+                                                    <div class="mb-3">
+                                                      <i class="display-4 text-muted bx bxs-cloud-upload"></i>
+                                                    </div>
+
+                                                    <h4>{{$order->file}}</h4>
+                                                  </div>
+                                              </div>
+
+                                            </div> <!-- end card-->
+
+
+                                <div class="card">
+                                    <div class="card-body">
+
+                                        <h4 class="card-title">Payment Method</h4>
+                                        <p class="card-title-desc">Choose the payment method that suits you</p>
+
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                        <div class="mb-3">
+                                                            <label class="control-label">Payment Method :</label>
+                                                            <select class="form-control select" name="payment">
+
+                                                                <option value="{{$order->payment}}">{{$order->payment}}</option>
+                                                                <option value="Cash">Cash </option>
+                                                                <option value="Sadaad">Sadaad</option>
+                                                                <option value="Aman QR" > Aman QR </option>
+
+                                                            </select>
+                                                        </div>
+                                                </div>
+
+                                                <div class="col-sm-6">
+                                                    <div class="mb-3">
+                                                        <label for="metadescription">Notes :  </label>
+                                                        <textarea class="form-control" id="metadescription" name="note" rows="5" placeholder="Meta Description">{{$order->note}}</textarea>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-8">
-                                                <div class="text-sm-end">
-                                                    <button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 me-2"><i class="mdi mdi-plus me-1"></i> Add New Order</button>
-                                                </div>
-                                            </div><!-- end col-->
-                                        </div>
 
-                                        <div class="table-responsive">
-                                            <table class="table align-middle table-nowrap table-check">
-                                                <thead class="table-light">
-                                                    <tr>
-                                                        <th style="width: 20px;" class="align-middle">
-                                                            <div class="form-check font-size-16">
-                                                                <input class="form-check-input" type="checkbox" id="checkAll">
-                                                                <label class="form-check-label" for="checkAll"></label>
-                                                            </div>
-                                                        </th>
-                                                        <th class="align-middle">Order ID</th>
-                                                        <th class="align-middle">Full Name</th>
-                                                        <th class="align-middle">Service</th>
-                                                        <th class="align-middle">brand</th>
-                                                        <th class="align-middle">Payment Status</th>
-                                                        <th class="align-middle">Payment Method</th>
-                                                        <th class="align-middle">View Details</th>
-                                                        <th class="align-middle">Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                  @foreach($orders as $order)
-                                                    <tr>
-                                                        <td>
-                                                            <div class="form-check font-size-16">
-                                                                <input class="form-check-input" type="checkbox" id="orderidcheck01">
-                                                                <label class="form-check-label" for="orderidcheck01"></label>
-                                                            </div>
-                                                        </td>
-                                                        <td><a href="javascript: void(0);" class="text-body fw-bold">{{$order->id}}</a> </td>
-                                                        <td>{{$order->name}}</td>
-                                                        <td>
-                                                            {{$order->service}}
-                                                        </td>
-                                                        <td>
-                                                            {{$order->brand}}
-                                                        </td>
-                                                        <td>
-                                                            <span class="badge badge-pill badge-soft-success font-size-12">Paid</span>
-                                                        </td>
-                                                        <td>
-                                                            <i class="fas fa-money-bill-alt me-1"></i> Cash
-                                                        </td>
-                                                        <td>
-                                                            <!-- Button trigger modal -->
-                                                            <button type="button" class="btn btn-primary btn-sm btn-rounded" data-bs-toggle="modal" data-bs-target=".orderdetailsModal">
-                                                                View Details
-                                                            </button>
-                                                        </td>
-                                                        <td>
-                                                            <div class="d-flex gap-3">
-                                                                <a href="javascript:void(0);" class="text-success"><i class="mdi mdi-pencil font-size-18"></i></a>
-                                                                <a href="javascript:void(0);" class="text-danger"><i class="mdi mdi-delete font-size-18"></i></a>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    @endforeach
+                                            <div class="d-flex flex-wrap gap-2">
+                                                <button type="submit" class="btn btn-primary waves-effect waves-light">Done</button>
+                                                <!-- <button type="submit" class="btn btn-secondary waves-effect waves-light">Update</button> -->
+                                            </div>
 
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <ul class="pagination pagination-rounded justify-content-end mb-2">
-                                            <li class="page-item disabled">
-                                                <a class="page-link" href="javascript: void(0);" aria-label="Previous">
-                                                    <i class="mdi mdi-chevron-left"></i>
-                                                </a>
-                                            </li>
-                                            <li class="page-item active"><a class="page-link" href="javascript: void(0);">1</a></li>
-                                            <li class="page-item"><a class="page-link" href="javascript: void(0);">2</a></li>
-                                            <li class="page-item"><a class="page-link" href="javascript: void(0);">3</a></li>
-                                            <li class="page-item"><a class="page-link" href="javascript: void(0);">4</a></li>
-                                            <li class="page-item"><a class="page-link" href="javascript: void(0);">5</a></li>
-                                            <li class="page-item">
-                                                <a class="page-link" href="javascript: void(0);" aria-label="Next">
-                                                    <i class="mdi mdi-chevron-right"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
                                     </div>
                                 </div>
+                              </form>
+
+                          </div>
+                      </div>
                             </div>
                         </div>
                         <!-- end row -->
+
                     </div> <!-- container-fluid -->
                 </div>
                 <!-- End Page-content -->
-
-                <!-- Modal -->
-                <div class="modal fade orderdetailsModal" tabindex="-1" role="dialog" aria-labelledby=orderdetailsModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id=orderdetailsModalLabel">Order Details</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <p class="mb-2">Product id: <span class="text-primary">#SK2540</span></p>
-                                <p class="mb-4">Billing Name: <span class="text-primary">Neal Matthews</span></p>
-
-                                <div class="table-responsive">
-                                    <table class="table align-middle table-nowrap">
-                                        <thead>
-                                            <tr>
-                                            <th scope="col">Product</th>
-                                            <th scope="col">Product Name</th>
-                                            <th scope="col">Price</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <th scope="row">
-                                                    <div>
-                                                        <img src="assets/images/product/img-7.png" alt="" class="avatar-sm">
-                                                    </div>
-                                                </th>
-                                                <td>
-                                                    <div>
-                                                        <h5 class="text-truncate font-size-14">Wireless Headphone (Black)</h5>
-                                                        <p class="text-muted mb-0">$ 225 x 1</p>
-                                                    </div>
-                                                </td>
-                                                <td>$ 255</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">
-                                                    <div>
-                                                        <img src="assets/images/product/img-4.png" alt="" class="avatar-sm">
-                                                    </div>
-                                                </th>
-                                                <td>
-                                                    <div>
-                                                        <h5 class="text-truncate font-size-14">Hoodie (Blue)</h5>
-                                                        <p class="text-muted mb-0">$ 145 x 1</p>
-                                                    </div>
-                                                </td>
-                                                <td>$ 145</td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="2">
-                                                    <h6 class="m-0 text-right">Sub Total:</h6>
-                                                </td>
-                                                <td>
-                                                    $ 400
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="2">
-                                                    <h6 class="m-0 text-right">Shipping:</h6>
-                                                </td>
-                                                <td>
-                                                    Free
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="2">
-                                                    <h6 class="m-0 text-right">Total:</h6>
-                                                </td>
-                                                <td>
-                                                    $ 400
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- end modal -->
 
 
                 <footer class="footer">
@@ -519,8 +466,17 @@
         <script src="{{asset('assets/libs/simplebar/simplebar.min.js')}}"></script>
         <script src="{{asset('assets/libs/node-waves/waves.min.js')}}"></script>
 
+        <!-- select 2 plugin -->
+        <script src="{{asset('assets/libs/select2/js/select2.min.js')}}"></script>
+
+        <!-- dropzone plugin -->
+        <script src="{{asset('assets/libs/dropzone/min/dropzone.min.js')}}"></script>
+
+        <!-- init js -->
+        <script src="{{asset('assets/js/pages/ecommerce-select2.init.js')}}"></script>
+
         <!-- App js -->
-        <script src="{{asset('assets/js/app.js')}}"></script>
+        <script src="assets/js/app.js"></script>
 
     </body>
 </html>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\project;
+use App\Models\User;
 
 class ProjectsController extends Controller
 {
@@ -16,7 +17,7 @@ class ProjectsController extends Controller
     {
         $projects = project::with('Worker')->get();
         // dd($projects);
-        return view('projects-grid',compact('projects'));
+        return view('projects.projects-grid',compact('projects'));
     }
 
     /**
@@ -26,7 +27,8 @@ class ProjectsController extends Controller
      */
     public function create()
     {
-        return view('createP');
+        $users = User::where('role','=','employee')->get();
+        return view('projects.add-project',compact('users'));
     }
 
     /**
@@ -59,7 +61,8 @@ class ProjectsController extends Controller
      */
     public function show($id)
     {
-        //
+        $projects = project::find($id);
+        return view('projects.projects-overview',compact('projects'));
     }
 
     /**
@@ -70,7 +73,8 @@ class ProjectsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $projects = project::find($id);
+        return view('projects.',compact('order'));
     }
 
     /**
@@ -82,7 +86,18 @@ class ProjectsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $project = project::find($id);
+        $project->name= request('Pname');
+        $project->description = request('Pdescription');
+        $project->employer_id = request('employee')[0];
+        $project->start = request('startDate');
+        $project->end = request('endDate');
+        $file = request()->file('file');
+        $name = $file->getClientOriginalName();
+        $name = str_replace(' ', '', $name);
+        $project->file = request()->file('file') ? request()->file('file')->storePubliclyAs('',$name) : null;
+        $project->save();
+        return redirect()->back()->with('success','project added successfuly');
     }
 
     /**
@@ -93,6 +108,9 @@ class ProjectsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $projects = project::find($id);
+        $projects->delete();
+        return redirect()->back()->with('success','project deleted successfuly');
+
     }
 }

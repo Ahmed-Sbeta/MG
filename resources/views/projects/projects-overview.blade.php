@@ -4,7 +4,7 @@
     <head>
 
         <meta charset="utf-8" />
-        <title>Service Request - MAWJA</title>
+        <title>Project Overview - MAWJA</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesbrand" name="author" />
@@ -61,7 +61,13 @@
                             <i class="fa fa-fw fa-bars"></i>
                         </button>
 
-
+                        <!-- App Search-->
+                        <form class="app-search d-none d-lg-block">
+                            <div class="position-relative">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <span class="bx bx-search-alt"></span>
+                            </div>
+                        </form>
 
 
                     </div>
@@ -134,7 +140,7 @@
                                     </a>
                                     <a href="javascript: void(0);" class="text-reset notification-item">
                                         <div class="d-flex">
-                                            <img src="assets/images/users/avatar-3.jpg"
+                                            <img src="{{asset('assets/images/users/avatar-3.jpg')}}"
                                                 class="me-3 rounded-circle avatar-xs" alt="user-pic">
                                             <div class="flex-grow-1">
                                                 <h6 class="mb-1">James Lemire</h6>
@@ -164,7 +170,7 @@
 
                                     <a href="javascript: void(0);" class="text-reset notification-item">
                                         <div class="d-flex">
-                                            <img src="assets/images/users/avatar-4.jpg"
+                                            <img src="{{asset('assets/images/users/avatar-4.jpg')}}"
                                                 class="me-3 rounded-circle avatar-xs" alt="user-pic">
                                             <div class="flex-grow-1">
                                                 <h6 class="mb-1">Salena Layfield</h6>
@@ -187,7 +193,7 @@
                         <div class="dropdown d-inline-block">
                             <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-1.jpg"
+                                <img class="rounded-circle header-profile-user" src="{{asset('assets/images/users/avatar-1.jpg')}}"
                                     alt="Header Avatar">
                                 <span class="d-none d-xl-inline-block ms-1" key="t-henry">Henry</span>
                                 <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
@@ -213,6 +219,7 @@
                 </div>
             </header>
 
+
             <!-- ========== Left Sidebar Start ========== -->
             @include('layout.sidebar')
             <!-- Left Sidebar End -->
@@ -231,12 +238,12 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                    <h4 class="mb-sm-0 font-size-18">Service Request</h4>
+                                    <h4 class="mb-sm-0 font-size-18">Project Overview</h4>
 
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);"> Services</a></li>
-                                            <li class="breadcrumb-item active">Service Request</li>
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Project</a></li>
+                                            <li class="breadcrumb-item active">Project Overview</li>
                                         </ol>
                                     </div>
 
@@ -246,132 +253,264 @@
                         <!-- end page title -->
 
                         <div class="row">
-                            <div class="col-12">
+                            <div class="col-lg-8">
                                 <div class="card">
                                     <div class="card-body">
+                                        <div class="d-flex">
+                                            <div class="flex-shrink-0 me-4">
+                                                <img src="{{asset('assets/images/companies/img-1.png')}}" alt="" class="avatar-sm">
+                                            </div>
 
-                                        <h4 class="card-title">Basic Information</h4>
-                                        @include('layout.message')
+                                            <div class="flex-grow-1 overflow-hidden">
+                                                <h5 class="text-truncate font-size-15">{{$projects->name}}</h5>
+                                                <p class="text-muted">Separate existence is a myth. For science, music, sport, etc.</p>
+                                            </div>
+                                        </div>
 
-                                        <p class="card-title-desc">Fill all information below</p>
+                                        <h5 class="font-size-15 mt-4">Project Details :</h5>
 
-                                        <form action="{{route('orders.store')}}" enctype="multipart/form-data" method="post">
-                                          @csrf
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <div class="mb-3">
-                                                        <label for="fullname">Full Name</label>
-                                                        <input id="fullname" name="fullname" type="text" class="form-control" placeholder="Full Name">
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="phonenumber">Phone Number</label>
-                                                        <input id="phonenumber" name="phonenumber" type="text" class="form-control" placeholder="09* *** ** **">
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="manufacturerbrand">Manufacturer Brand</label>
-                                                        <input id="manufacturerbrand" name="manufacturerbrand" type="text" class="form-control" placeholder="Manufacturer Brand">
-                                                    </div>
+                                        <p class="text-muted">{{$projects->description}}</p>
 
-                                                </div>
 
-                                                <div class="col-sm-6">
-                                                    <div class="mb-3">
-                                                        <label class="control-label">Service Type</label>
-                                                        <select class="form-control select" name="Service">
-                                                            <option>Select</option>
-                                                            <option  value="Visual Identity Design">Visual Identity Design </option>
-                                                            <option value="Content Writing">Content Writing</option>
-                                                            <option  value="Graphic Design">Graphic Design </option>
-                                                            <option  value="Web Desgin">Web Desgin </option>
-                                                            <option  value="Billboard Design">Billboard Design </option>
-                                                            <option  value="Animation">Animation </option>
-                                                            <option  value="product photography"> product photography  </option>
 
-                                                        </select>
-                                                    </div>
-
-                                                    <div class="mb-3">
-                                                        <label for="productdesc">Product Description</label>
-                                                        <textarea class="form-control" name="description" id="productdesc" rows="6" placeholder="Product Description"></textarea>
-                                                    </div>
-
+                                        <div class="row task-dates">
+                                            <div class="col-sm-4 col-6">
+                                                <div class="mt-4">
+                                                    <h5 class="font-size-14"><i class="bx bx-calendar me-1 text-primary"></i> Start Date</h5>
+                                                    <p class="text-muted mb-0">{{$projects->start}}</p>
                                                 </div>
                                             </div>
 
-                                            <!-- <div class="d-flex flex-wrap gap-2">
-                                                <button type="submit" class="btn btn-primary waves-effect waves-light">Save Changes</button>
-                                                <button type="button" class="btn btn-secondary waves-effect waves-light">Cancel</button>
-                                            </div> -->
-
-
-                                            <div class="card">
-                                              <div class="card-body">
-                                                <h4 class="card-title mb-3">Suggested Ideas</h4>
-
-                                                  <div class="fallback">
-                                                    <input name="file" type="file" multiple />
-                                                  </div>
-
-                                                  <div class="dz-message needsclick">
-                                                    <div class="mb-3">
-                                                      <i class="display-4 text-muted bx bxs-cloud-upload"></i>
-                                                    </div>
-
-                                                    <h4>Drop files here or click to upload.</h4>
-                                                  </div>
-                                              </div>
-
-                                            </div> <!-- end card-->
-
-
-                                <div class="card">
-                                    <div class="card-body">
-
-                                        <h4 class="card-title">Payment Method</h4>
-                                        <p class="card-title-desc">Choose the payment method that suits you</p>
-
-                                            <div class="row">
-                                                <div class="col-sm-6">
-
-
-                                                        <div class="mb-3">
-                                                            <label class="control-label">Payment Method :</label>
-                                                            <select class="form-control select" name="payment">
-                                                                <option>Select</option>
-                                                                <option  >Cash </option>
-                                                                <option value="EL">Sadaad</option>
-                                                                <option  > Aman QR </option>
-
-                                                            </select>
-                                                        </div>
-                                                </div>
-
-                                                <div class="col-sm-6">
-                                                    <div class="mb-3">
-                                                        <label for="metadescription">Notes :  </label>
-                                                        <textarea class="form-control" id="metadescription" name="note" rows="5" placeholder="Meta Description"></textarea>
-                                                    </div>
+                                            <div class="col-sm-4 col-6">
+                                                <div class="mt-4">
+                                                    <h5 class="font-size-14"><i class="bx bx-calendar-check me-1 text-primary"></i> Due Date</h5>
+                                                    <p class="text-muted mb-0">{{$projects->End}}</p>
                                                 </div>
                                             </div>
-
-                                            <div class="d-flex flex-wrap gap-2">
-                                                <button type="submit" class="btn btn-primary waves-effect waves-light">Done</button>
-                                                <!-- <button type="submit" class="btn btn-secondary waves-effect waves-light">Update</button> -->
-                                            </div>
-
+                                        </div>
                                     </div>
                                 </div>
-                              </form>
-
-                          </div>
-                      </div>
                             </div>
+                            <!-- end col -->
+
+                            <div class="col-lg-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title mb-4">Team Members</h4>
+
+                                        <div class="table-responsive">
+                                            <table class="table align-middle table-nowrap">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="width: 50px;"><img src="{{asset('assets/images/users/avatar-2.jpg')}}" class="rounded-circle avatar-xs" alt=""></td>
+                                                        <td><h5 class="font-size-14 m-0"><a href="javascript: void(0);" class="text-dark">{{$projects->Worker->name}}</a></h5></td>
+                                                        <td>
+                                                            <div>
+                                                                <a href="javascript: void(0);" class="badge bg-primary bg-soft text-primary font-size-11">{{$projects->Worker->job}}</a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title mb-4">Similar works</h4>
+
+                                        <div class="table-responsive">
+                                            <table class="table align-middle table-nowrap">
+                                                <tbody>
+                                                    <tr>
+                                                        <!-- <td style="width: 50px;"><img src="assets/images/users/avatar-2.jpg" class="rounded-circle avatar-xs" alt=""></td> -->
+                                                        <td><h5 class="font-size-14 m-0"><a href="javascript: void(0);" class="text-dark">{{$projects->file}}</a></h5></td>
+                                                        <td>
+                                                            <div class="text-center">
+
+                                                                <a class="btn btn-outline-secondary btn-sm edit" title="Edit">
+                                                                    <i class="fas fa-pencil-alt"></i>
+                                                                </a>
+                                                                &nbsp;
+                                                                <a class="btn btn-outline-secondary btn-sm delete" title="Delete">
+                                                                    <i class="fas fa-trash-alt"></i>
+                                                                </a>
+                                                                &nbsp;
+                                                                <a href="javascript: void(0);" class="text-dark"><i class="bx bx-download h3 m-0" title="Download"></i></a>
+
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+
+
+
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end col -->
                         </div>
                         <!-- end row -->
+
+
+                        <div class="row">
+                            <!-- <div class="col-lg-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title mb-4">Overview</h4>
+
+                                        <div id="overview-chart" class="apex-charts" dir="ltr"></div>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <!-- end col -->
+
+
+
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title mb-4">Attached Files</h4>
+                                        <div class="table-responsive">
+                                            <table class="table table-nowrap align-middle table-hover mb-0">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="width: 45px;">
+                                                            <div class="avatar-sm">
+                                                                <span class="avatar-title rounded-circle bg-primary bg-soft text-primary font-size-24">
+                                                                    <i class="bx bxs-file-doc"></i>
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <h5 class="font-size-14 mb-1"><a href="javascript: void(0);" class="text-dark">Skote Landing.Zip</a></h5>
+                                                            <small>Size : 3.25 MB</small>
+                                                        </td>
+                                                        <td>
+                                                            <div class="text-center">
+
+                                                                <a class="btn btn-outline-secondary btn-sm edit" title="Edit">
+                                                                    <i class="fas fa-pencil-alt"></i>
+                                                                </a>
+                                                                &nbsp;
+                                                                <a class="btn btn-outline-secondary btn-sm delete" title="Delete">
+                                                                    <i class="fas fa-trash-alt"></i>
+                                                                </a>
+                                                                &nbsp;
+                                                                <a href="javascript: void(0);" class="text-dark"><i class="bx bx-download h3 m-0" title="Download"></i></a>
+
+                                                            </div>
+
+                                                        </td>
+                                                    </tr>
+
+
+
+                                                </tbody>
+
+                                            </table>
+                                            <div class="text-center mt-4 pt-2">
+                                                <a href="javascript: void(0);" class="btn btn-info btn-sm">  <i class="mdi mdi-plus me-1"></i>Add Work</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end col -->
+
+
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title mb-5"> Timeline Project</h4>
+                                        <div class="">
+                                            <ul class="verti-timeline list-unstyled">
+                                                <li class="event-list">
+                                                    <div class="event-timeline-dot">
+                                                        <i class="bx bx-right-arrow-circle bx-fade-right"></i>
+                                                    </div>
+                                                    <div class="d-flex">
+                                                        <div class="flex-shrink-0 me-3">
+                                                            <i class="bx bx-copy-alt h2 text-primary"></i>
+                                                        </div>
+                                                        <div class="flex-grow-1">
+                                                            <div>
+                                                                <h5>Start the project </h5>
+                                                                <!-- <p class="text-muted">New common language will be more simple and regular than the existing.</p> -->
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="event-list">
+                                                    <div class="event-timeline-dot">
+                                                        <i class="bx bx-right-arrow-circle"></i>
+                                                    </div>
+                                                    <div class="d-flex">
+                                                        <div class="flex-shrink-0 me-3">
+                                                            <i class="bx bx-desktop h2 text-primary"></i>
+                                                        </div>
+                                                        <div class="flex-grow-1">
+                                                            <div>
+                                                                <h5>Project under construction</h5>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="event-list active">
+                                                    <div class="event-timeline-dot">
+                                                        <i class="bx bx-right-arrow-circle"></i>
+                                                    </div>
+                                                    <div class="d-flex">
+                                                        <div class="flex-shrink-0 me-3">
+                                                            <i class="bx bx-package h2 text-primary"></i>
+                                                        </div>
+                                                        <div class="flex-grow-1">
+                                                            <div>
+                                                                <h5>Preparing the project for delivery</h5>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="event-list">
+                                                    <div class="event-timeline-dot">
+                                                        <i class="bx bx-right-arrow-circle"></i>
+                                                    </div>
+                                                    <div class="d-flex">
+                                                        <div class="flex-shrink-0 me-3">
+                                                            <i class="bx bx-badge-check h2 text-primary"></i>
+                                                        </div>
+                                                        <div class="flex-grow-1">
+                                                            <div>
+                                                                <h5>Project delivered</h5>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
 
                     </div> <!-- container-fluid -->
                 </div>
                 <!-- End Page-content -->
+
+
 
 
                 <footer class="footer">
@@ -461,16 +600,11 @@
         <script src="{{asset('assets/libs/simplebar/simplebar.min.js')}}"></script>
         <script src="{{asset('assets/libs/node-waves/waves.min.js')}}"></script>
 
-        <!-- select 2 plugin -->
-        <script src="{{asset('assets/libs/select2/js/select2.min.js')}}"></script>
+        <!-- apexcharts -->
+        <script src="{{asset('assets/libs/apexcharts/apexcharts.min.js')}}"></script>
 
-        <!-- dropzone plugin -->
-        <script src="{{asset('assets/libs/dropzone/min/dropzone.min.js')}}"></script>
+        <script src="{{asset('assets/js/pages/project-overview.init.js')}}"></script>
 
-        <!-- init js -->
-        <script src="{{asset('assets/js/pages/ecommerce-select2.init.js')}}"></script>
-
-        <!-- App js -->
         <script src="assets/js/app.js"></script>
 
     </body>

@@ -86,9 +86,9 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="/projects" key="t-p-grid">Projects Grid</a></li>
-                        <li><a href="projects-list.html" key="t-p-list">Projects List</a></li>
+                        <li><a href="/projects-list.html" key="t-p-list">Projects List</a></li>
                         <li><a href="/projects/create" key="t-p-overview">Project Overview</a></li>
-                        <li><a href="projects/create" key="t-create-new">Create New</a></li>
+                        <li><a href="/projects/create" key="t-create-new">Create New</a></li>
                     </ul>
                 </li>
 

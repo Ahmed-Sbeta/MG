@@ -4,14 +4,15 @@
     <head>
 
         <meta charset="utf-8" />
-        <title>Project Overview - MAWJA</title>
+        <title>Create New Project - MAWJA</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesbrand" name="author" />
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{asset('assets/images/mawja22.png')}}">
 
-        <link href="{{asset('assets/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css')}}" rel="stylesheet">
+        <link href="{{ asset('assets/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css')}}" rel="stylesheet">
+
 
         <!-- dropzone css -->
         <link href="{{asset('assets/libs/dropzone/min/dropzone.min.css')}}" rel="stylesheet" type="text/css" />
@@ -23,6 +24,8 @@
         <!-- App Css-->
         <link href="{{asset('assets/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
 
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     </head>
 
     <body data-sidebar="dark">
@@ -31,8 +34,6 @@
 
         <!-- Begin page -->
         <div id="layout-wrapper">
-
-
             <header id="page-topbar">
                 <div class="navbar-header">
                     <div class="d-flex">
@@ -40,19 +41,19 @@
                         <div class="navbar-brand-box">
                             <a href="index.html" class="logo logo-dark">
                                 <span class="logo-sm">
-                                    <img src="assets/images/logo.svg" alt="" height="22">
+                                    <img src="{{asset('assets/images/logo.svg')}}" alt="" height="22">
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="assets/images/logo-dark.png" alt="" height="17">
+                                    <img src="{{asset('assets/images/logo-dark.png')}}" alt="" height="17">
                                 </span>
                             </a>
 
                             <a href="index.html" class="logo logo-light">
                                 <span class="logo-sm">
-                                    <img src="assets/images/logo-light.svg" alt="" height="22">
+                                    <img src="{{asset('assets/images/logo-light.svg')}}" alt="" height="22">
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="assets/images/logo-light.png" alt="" height="50">
+                                    <img src="{{asset('assets/images/logo-light.png')}}" alt="" height="50">
                                 </span>
                             </a>
                         </div>
@@ -193,7 +194,7 @@
                         <div class="dropdown d-inline-block">
                             <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-1.jpg"
+                                <img class="rounded-circle header-profile-user" src="{{asset('assets/images/users/avatar-1.jpg')}}"
                                     alt="Header Avatar">
                                 <span class="d-none d-xl-inline-block ms-1" key="t-henry">Henry</span>
                                 <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
@@ -219,9 +220,8 @@
                 </div>
             </header>
 
-
             <!-- ========== Left Sidebar Start ========== -->
-            @include('layout.sidebar')
+          @include('layout.sidebar')
             <!-- Left Sidebar End -->
 
 
@@ -238,12 +238,12 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                    <h4 class="mb-sm-0 font-size-18">Project Overview</h4>
+                                    <h4 class="mb-sm-0 font-size-18">Create New</h4>
 
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
                                             <li class="breadcrumb-item"><a href="javascript: void(0);">Project</a></li>
-                                            <li class="breadcrumb-item active">Project Overview</li>
+                                            <li class="breadcrumb-item active">Create New</li>
                                         </ol>
                                     </div>
 
@@ -253,269 +253,86 @@
                         <!-- end page title -->
 
                         <div class="row">
-                            <div class="col-lg-8">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="d-flex">
-                                            <div class="flex-shrink-0 me-4">
-                                                <img src="assets/images/companies/img-1.png" alt="" class="avatar-sm">
-                                            </div>
-
-                                            <div class="flex-grow-1 overflow-hidden">
-                                                <h5 class="text-truncate font-size-15">Skote Dashboard UI</h5>
-                                                <p class="text-muted">Separate existence is a myth. For science, music, sport, etc.</p>
-                                            </div>
-                                        </div>
-
-                                        <h5 class="font-size-15 mt-4">Project Details :</h5>
-
-                                        <p class="text-muted">To an English person, it will seem like simplified English, as a skeptical Cambridge friend of mine told me what Occidental is. The European languages are members of the same family. Their separate existence is a myth. For science, music, sport, etc,</p>
-
-
-
-                                        <div class="row task-dates">
-                                            <div class="col-sm-4 col-6">
-                                                <div class="mt-4">
-                                                    <h5 class="font-size-14"><i class="bx bx-calendar me-1 text-primary"></i> Start Date</h5>
-                                                    <p class="text-muted mb-0">08 Sept, 2019</p>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-sm-4 col-6">
-                                                <div class="mt-4">
-                                                    <h5 class="font-size-14"><i class="bx bx-calendar-check me-1 text-primary"></i> Due Date</h5>
-                                                    <p class="text-muted mb-0">12 Oct, 2019</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end col -->
-
-                            <div class="col-lg-4">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title mb-4">Team Members</h4>
-
-                                        <div class="table-responsive">
-                                            <table class="table align-middle table-nowrap">
-                                                <tbody>
-                                                    <tr>
-                                                        <td style="width: 50px;"><img src="assets/images/users/avatar-2.jpg" class="rounded-circle avatar-xs" alt=""></td>
-                                                        <td><h5 class="font-size-14 m-0"><a href="javascript: void(0);" class="text-dark">Daniel Canales</a></h5></td>
-                                                        <td>
-                                                            <div>
-                                                                <a href="javascript: void(0);" class="badge bg-primary bg-soft text-primary font-size-11">Frontend</a>
-                                                                <a href="javascript: void(0);" class="badge bg-primary bg-soft text-primary font-size-11">UI</a>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-
-
-
-
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title mb-4">Similar works</h4>
-
-                                        <div class="table-responsive">
-                                            <table class="table align-middle table-nowrap">
-                                                <tbody>
-                                                    <tr>
-                                                        <!-- <td style="width: 50px;"><img src="assets/images/users/avatar-2.jpg" class="rounded-circle avatar-xs" alt=""></td> -->
-                                                        <td><h5 class="font-size-14 m-0"><a href="javascript: void(0);" class="text-dark">Photo.png</a></h5></td>
-                                                        <td>
-                                                            <div class="text-center">
-
-                                                                <a class="btn btn-outline-secondary btn-sm edit" title="Edit">
-                                                                    <i class="fas fa-pencil-alt"></i>
-                                                                </a>
-                                                                &nbsp;
-                                                                <a class="btn btn-outline-secondary btn-sm delete" title="Delete">
-                                                                    <i class="fas fa-trash-alt"></i>
-                                                                </a>
-                                                                &nbsp;
-                                                                <a href="javascript: void(0);" class="text-dark"><i class="bx bx-download h3 m-0" title="Download"></i></a>
-
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-
-
-
-
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end col -->
-                        </div>
-                        <!-- end row -->
-
-
-                        <div class="row">
-                            <!-- <div class="col-lg-4">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title mb-4">Overview</h4>
-
-                                        <div id="overview-chart" class="apex-charts" dir="ltr"></div>
-                                    </div>
-                                </div>
-                            </div> -->
-                            <!-- end col -->
-
-
-
                             <div class="col-lg-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="card-title mb-4">Attached Files</h4>
-                                        <div class="table-responsive">
-                                            <table class="table table-nowrap align-middle table-hover mb-0">
-                                                <tbody>
-                                                    <tr>
-                                                        <td style="width: 45px;">
-                                                            <div class="avatar-sm">
-                                                                <span class="avatar-title rounded-circle bg-primary bg-soft text-primary font-size-24">
-                                                                    <i class="bx bxs-file-doc"></i>
-                                                                </span>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <h5 class="font-size-14 mb-1"><a href="javascript: void(0);" class="text-dark">Skote Landing.Zip</a></h5>
-                                                            <small>Size : 3.25 MB</small>
-                                                        </td>
-                                                        <td>
-                                                            <div class="text-center">
+                                        <h4 class="card-title mb-4">Create New Project</h4>
+                                        @include('layout.message')
 
-                                                                <a class="btn btn-outline-secondary btn-sm edit" title="Edit">
-                                                                    <i class="fas fa-pencil-alt"></i>
-                                                                </a>
-                                                                &nbsp;
-                                                                <a class="btn btn-outline-secondary btn-sm delete" title="Delete">
-                                                                    <i class="fas fa-trash-alt"></i>
-                                                                </a>
-                                                                &nbsp;
-                                                                <a href="javascript: void(0);" class="text-dark"><i class="bx bx-download h3 m-0" title="Download"></i></a>
+                                        <form action="{{route('projects.store')}}" method="post" enctype="multipart/form-data">
+                                          @csrf
+                                            <div class="row mb-4">
+                                                <label for="projectname" class="col-form-label col-lg-2">Employee account</label>
+                                                <div class="col-lg-10">
+                                                  <select class="contributors form-control js-example-basic-multiple" name="employee[]">
+                                                    @foreach($users as $user)
+                                                    <option value="{{$user->id}}">{{$user->name}}</option>
+                                                    @endforeach
+                                                  </select>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-4">
+                                                <label for="projectname" class="col-form-label col-lg-2">Project Name</label>
+                                                <div class="col-lg-10">
+                                                    <input id="projectname" name="Pname" type="text" class="form-control" placeholder="Enter Project Name...">
+                                                </div>
+                                            </div>
+                                            <div class="row mb-4">
+                                                <label for="projectdesc" class="col-form-label col-lg-2">Project Description</label>
+                                                <div class="col-lg-10">
+                                                    <textarea class="form-control" id="projectdesc" rows="3" name="Pdescription" placeholder="Enter Project Description..."></textarea>
+                                                </div>
+                                            </div>
 
-                                                            </div>
+                                            <div class="row mb-4">
+                                                <label class="col-form-label col-lg-2">Deadline date</label>
+                                                <div class="col-lg-10">
+                                                    <div class="input-daterange input-group" id="project-date-inputgroup" data-provide="datepicker" data-date-format="dd M, yyyy"  data-date-container='#project-date-inputgroup' data-date-autoclose="true">
+                                                        <input type="text" class="form-control" name="startDate" placeholder="Start Date" />
+                                                        <input type="text" class="form-control" name="endDate" placeholder="End Date" />
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                                                        </td>
-                                                    </tr>
+                                            <!-- <div class="row mb-4">
+                                                <label for="projectbudget" class="col-form-label col-lg-2">Budget</label>
+                                                <div class="col-lg-10">
+                                                    <input id="projectbudget" name="projectbudget" type="text" placeholder="Enter Project Budget..." class="form-control">
+                                                </div>
+                                            </div> -->
+                                        <div class="row mb-4">
+                                            <label class="col-form-label col-lg-2">Attached Files</label>
+                                            <div class="col-lg-10">
+                                                    <div class="fallback">
+                                                        <input name="file" type="file" multiple />
+                                                    </div>
 
+                                                    <div class="dz-message needsclick">
+                                                        <div class="mb-3">
+                                                            <i class="display-4 text-muted bx bxs-cloud-upload"></i>
+                                                        </div>
 
-
-                                                </tbody>
-
-                                            </table>
-                                            <div class="text-center mt-4 pt-2">
-                                                <a href="javascript: void(0);" class="btn btn-info btn-sm">  <i class="mdi mdi-plus me-1"></i>Add Work</a>
+                                                        <h4>Drop files here or click to upload.</h4>
+                                                    </div>
                                             </div>
                                         </div>
+                                        <div class="row justify-content-end">
+                                            <div class="col-lg-10">
+                                                <button type="submit" class="btn btn-info">Create Project</button>
+                                            </div>
+                                        </div>
+                                      </form>
+
+
                                     </div>
                                 </div>
                             </div>
-                            <!-- end col -->
-
-
-                            <!-- end col -->
                         </div>
                         <!-- end row -->
-
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title mb-5"> Timeline Project</h4>
-                                        <div class="">
-                                            <ul class="verti-timeline list-unstyled">
-                                                <li class="event-list">
-                                                    <div class="event-timeline-dot">
-                                                        <i class="bx bx-right-arrow-circle bx-fade-right"></i>
-                                                    </div>
-                                                    <div class="d-flex">
-                                                        <div class="flex-shrink-0 me-3">
-                                                            <i class="bx bx-copy-alt h2 text-primary"></i>
-                                                        </div>
-                                                        <div class="flex-grow-1">
-                                                            <div>
-                                                                <h5>Start the project </h5>
-                                                                <!-- <p class="text-muted">New common language will be more simple and regular than the existing.</p> -->
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="event-list">
-                                                    <div class="event-timeline-dot">
-                                                        <i class="bx bx-right-arrow-circle"></i>
-                                                    </div>
-                                                    <div class="d-flex">
-                                                        <div class="flex-shrink-0 me-3">
-                                                            <i class="bx bx-desktop h2 text-primary"></i>
-                                                        </div>
-                                                        <div class="flex-grow-1">
-                                                            <div>
-                                                                <h5>Project under construction</h5>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="event-list active">
-                                                    <div class="event-timeline-dot">
-                                                        <i class="bx bx-right-arrow-circle"></i>
-                                                    </div>
-                                                    <div class="d-flex">
-                                                        <div class="flex-shrink-0 me-3">
-                                                            <i class="bx bx-package h2 text-primary"></i>
-                                                        </div>
-                                                        <div class="flex-grow-1">
-                                                            <div>
-                                                                <h5>Preparing the project for delivery</h5>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="event-list">
-                                                    <div class="event-timeline-dot">
-                                                        <i class="bx bx-right-arrow-circle"></i>
-                                                    </div>
-                                                    <div class="d-flex">
-                                                        <div class="flex-shrink-0 me-3">
-                                                            <i class="bx bx-badge-check h2 text-primary"></i>
-                                                        </div>
-                                                        <div class="flex-grow-1">
-                                                            <div>
-                                                                <h5>Project delivered</h5>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
 
                     </div> <!-- container-fluid -->
                 </div>
                 <!-- End Page-content -->
-
-
 
 
                 <footer class="footer">
@@ -605,12 +422,24 @@
         <script src="{{asset('assets/libs/simplebar/simplebar.min.js')}}"></script>
         <script src="{{asset('assets/libs/node-waves/waves.min.js')}}"></script>
 
-        <!-- apexcharts -->
-        <script src="{{asset('assets/libs/apexcharts/apexcharts.min.js')}}"></script>
+        <!-- bootstrap datepicker -->
+        <script src="{{asset('assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
 
-        <script src="{{asset('assets/js/pages/project-overview.init.js')}}"></script>
+        <!-- dropzone plugin -->
+        <script src="{{asset('assets/libs/dropzone/min/dropzone.min.js')}}"></script>
 
-        <script src="{{asset('assets/js/app.js')}}"></script>
+        <script src="assets/js/app.js"></script>
+        <script type="text/javascript">
+        $( document ).ready(function() {
+            $('.js-example-basic-single').select2({
+              maximumSelectionLength: 1 ,
+
+            });
+            $('.js-example-basic-multiple').select2();
+
+            document.getElementById("rtl-mode-switch").trigger('click');
+          });
+        </script>
 
     </body>
 </html>

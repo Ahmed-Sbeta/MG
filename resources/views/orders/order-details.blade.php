@@ -4,18 +4,12 @@
     <head>
 
         <meta charset="utf-8" />
-        <title>Create New Project - MAWJA</title>
+        <title>Order Detail | Skote - Admin & Dashboard Template</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesbrand" name="author" />
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{asset('assets/images/mawja22.png')}}">
-
-        <link href="{{ asset('assets/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css')}}" rel="stylesheet">
-
-
-        <!-- dropzone css -->
-        <link href="{{asset('assets/libs/dropzone/min/dropzone.min.css')}}" rel="stylesheet" type="text/css" />
 
         <!-- Bootstrap Css -->
         <link href="{{asset('assets/css/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
@@ -24,8 +18,6 @@
         <!-- App Css-->
         <link href="{{asset('assets/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
 
-        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     </head>
 
     <body data-sidebar="dark">
@@ -65,38 +57,16 @@
                         </button>
 
                         <!-- App Search-->
-                        <form class="app-search d-none d-lg-block">
-                            <div class="position-relative">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="bx bx-search-alt"></span>
-                            </div>
-                        </form>
+
 
 
                     </div>
 
                     <div class="d-flex">
 
-                        <div class="dropdown d-inline-block d-lg-none ms-2">
-                            <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-search-dropdown"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="mdi mdi-magnify"></i>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
-                                aria-labelledby="page-header-search-dropdown">
 
-                                <form class="p-3">
-                                    <div class="form-group m-0">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Search ..." aria-label="Recipient's username">
-                                            <div class="input-group-append">
-                                                <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
+
+
 
 
 
@@ -143,7 +113,7 @@
                                     </a>
                                     <a href="javascript: void(0);" class="text-reset notification-item">
                                         <div class="d-flex">
-                                            <img src="assets/images/users/avatar-3.jpg"
+                                            <img src="{{asset('assets/images/users/avatar-3.jpg')}}"
                                                 class="me-3 rounded-circle avatar-xs" alt="user-pic">
                                             <div class="flex-grow-1">
                                                 <h6 class="mb-1">James Lemire</h6>
@@ -173,7 +143,7 @@
 
                                     <a href="javascript: void(0);" class="text-reset notification-item">
                                         <div class="d-flex">
-                                            <img src="assets/images/users/avatar-4.jpg"
+                                            <img src="{{asset('assets/images/users/avatar-4.jpg')}}"
                                                 class="me-3 rounded-circle avatar-xs" alt="user-pic">
                                             <div class="flex-grow-1">
                                                 <h6 class="mb-1">Salena Layfield</h6>
@@ -196,7 +166,7 @@
                         <div class="dropdown d-inline-block">
                             <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-1.jpg"
+                                <img class="rounded-circle header-profile-user" src="{{asset('assets/images/users/avatar-1.jpg')}}"
                                     alt="Header Avatar">
                                 <span class="d-none d-xl-inline-block ms-1" key="t-henry">Henry</span>
                                 <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
@@ -223,7 +193,7 @@
             </header>
 
             <!-- ========== Left Sidebar Start ========== -->
-          @include('layout.sidebar')
+            @include('layout.sidebar')
             <!-- Left Sidebar End -->
 
 
@@ -240,12 +210,12 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                    <h4 class="mb-sm-0 font-size-18">Create New</h4>
+                                    <h4 class="mb-sm-0 font-size-18">Order Detail</h4>
 
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Project</a></li>
-                                            <li class="breadcrumb-item active">Create New</li>
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Orders</a></li>
+                                            <li class="breadcrumb-item active">Order Detail</li>
                                         </ol>
                                     </div>
 
@@ -258,80 +228,144 @@
                             <div class="col-lg-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="card-title mb-4">Create New Project</h4>
-                                        @include('layout.message')
-
-                                        <form action="{{route('projects.store')}}" method="post" enctype="multipart/form-data">
-                                          @csrf
-                                            <div class="row mb-4">
-                                                <label for="projectname" class="col-form-label col-lg-2">Employee account</label>
-                                                <div class="col-lg-10">
-                                                  <select class="contributors form-control js-example-basic-multiple" name="employee[]">
-                                                    <option value="1">Alabama</option>
-                                                    <option value="2">Wyoming</option>
-                                                    <option value="3">admin</option>
-                                                    <option value="4">varity</option>
-                                                    <option value="5">varity</option>
-                                                  </select>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-4">
-                                                <label for="projectname" class="col-form-label col-lg-2">Project Name</label>
-                                                <div class="col-lg-10">
-                                                    <input id="projectname" name="Pname" type="text" class="form-control" placeholder="Enter Project Name...">
-                                                </div>
-                                            </div>
-                                            <div class="row mb-4">
-                                                <label for="projectdesc" class="col-form-label col-lg-2">Project Description</label>
-                                                <div class="col-lg-10">
-                                                    <textarea class="form-control" id="projectdesc" rows="3" name="Pdescription" placeholder="Enter Project Description..."></textarea>
-                                                </div>
-                                            </div>
-
-                                            <div class="row mb-4">
-                                                <label class="col-form-label col-lg-2">Deadline date</label>
-                                                <div class="col-lg-10">
-                                                    <div class="input-daterange input-group" id="project-date-inputgroup" data-provide="datepicker" data-date-format="dd M, yyyy"  data-date-container='#project-date-inputgroup' data-date-autoclose="true">
-                                                        <input type="text" class="form-control" name="startDate" placeholder="Start Date" />
-                                                        <input type="text" class="form-control" name="endDate" placeholder="End Date" />
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!-- <div class="row mb-4">
-                                                <label for="projectbudget" class="col-form-label col-lg-2">Budget</label>
-                                                <div class="col-lg-10">
-                                                    <input id="projectbudget" name="projectbudget" type="text" placeholder="Enter Project Budget..." class="form-control">
-                                                </div>
-                                            </div> -->
-                                        <div class="row mb-4">
-                                            <label class="col-form-label col-lg-2">Attached Files</label>
-                                            <div class="col-lg-10">
-                                                    <div class="fallback">
-                                                        <input name="file" type="file" multiple />
-                                                    </div>
-
-                                                    <div class="dz-message needsclick">
-                                                        <div class="mb-3">
-                                                            <i class="display-4 text-muted bx bxs-cloud-upload"></i>
+                                        <div class="row">
+                                            <div class="col-xl-6">
+                                                <div class="product-detai-imgs">
+                                                    <div class="row">
+                                                        <div class="col-md-2 col-sm-3 col-4">
+                                                            <div class="nav flex-column nav-pills " id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                                                <a class="nav-link active" id="product-1-tab" data-bs-toggle="pill" href="#product-1" role="tab" aria-controls="product-1" aria-selected="true">
+                                                                    <img src="{{asset('assets/images/product/img-7.png')}}" alt="" class="img-fluid mx-auto d-block rounded">
+                                                                </a>
+                                                                <a class="nav-link" id="product-2-tab" data-bs-toggle="pill" href="#product-2" role="tab" aria-controls="product-2" aria-selected="false">
+                                                                    <img src="{{asset('assets/images/product/img-8.png')}}" alt="" class="img-fluid mx-auto d-block rounded">
+                                                                </a>
+                                                                <a class="nav-link" id="product-3-tab" data-bs-toggle="pill" href="#product-3" role="tab" aria-controls="product-3" aria-selected="false">
+                                                                    <img src="{{asset('assets/images/product/img-7.png')}}" alt="" class="img-fluid mx-auto d-block rounded">
+                                                                </a>
+                                                                <a class="nav-link" id="product-4-tab" data-bs-toggle="pill" href="#product-4" role="tab" aria-controls="product-4" aria-selected="false">
+                                                                    <img src="{{asset('assets/images/product/img-8.png')}}" alt="" class="img-fluid mx-auto d-block rounded">
+                                                                </a>
+                                                            </div>
                                                         </div>
+                                                        <div class="col-md-7 offset-md-1 col-sm-9 col-8">
+                                                            <div class="tab-content" id="v-pills-tabContent">
+                                                                <div class="tab-pane fade show active" id="product-1" role="tabpanel" aria-labelledby="product-1-tab">
+                                                                    <div>
+                                                                        <img src="{{asset('assets/images/product/img-7.png')}}" alt="" class="img-fluid mx-auto d-block">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="tab-pane fade" id="product-2" role="tabpanel" aria-labelledby="product-2-tab">
+                                                                    <div>
+                                                                        <img src="{{asset('assets/images/product/img-8.png')}}" alt="" class="img-fluid mx-auto d-block">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="tab-pane fade" id="product-3" role="tabpanel" aria-labelledby="product-3-tab">
+                                                                    <div>
+                                                                        <img src="{{asset('assets/images/product/img-7.png')}}" alt="" class="img-fluid mx-auto d-block">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="tab-pane fade" id="product-4" role="tabpanel" aria-labelledby="product-4-tab">
+                                                                    <div>
+                                                                        <img src="{{asset('assets/images/product/img-8.png')}}" alt="" class="img-fluid mx-auto d-block">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
 
-                                                        <h4>Drop files here or click to upload.</h4>
+
+                                                        </div>
                                                     </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-6">
+                                                <div class="mt-4 mt-xl-3">
+                                                    <a href="javascript: void(0);" class="text-primary">Headphone</a>
+                                                    <h4 class="mt-1 mb-3">Wireless Headphone (Black)</h4>
+
+
+
+
+
+                                                    <h5 class="mb-4">Price : <b>$225 USD</b></h5>
+                                                    <p class="text-muted mb-4">To achieve this, it would be necessary to have uniform grammar pronunciation and more common words If several languages coalesce</p>
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-6">
+                                                            <div>
+                                                                <p class="text-muted"><i class="bx bx-unlink font-size-16 align-middle text-primary me-1"></i> Wireless</p>
+                                                                <p class="text-muted"><i class="bx bx-shape-triangle font-size-16 align-middle text-primary me-1"></i> Wireless Range : 10m</p>
+                                                                <p class="text-muted"><i class="bx bx-battery font-size-16 align-middle text-primary me-1"></i> Battery life : 6hrs</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div>
+                                                                <p class="text-muted"><i class="bx bx-user-voice font-size-16 align-middle text-primary me-1"></i> Bass</p>
+                                                                <p class="text-muted"><i class="bx bx-cog font-size-16 align-middle text-primary me-1"></i> Warranty : 1 Year</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="product-color">
+                                                        <h5 class="font-size-15">Color :</h5>
+                                                        <a href="javascript: void(0);" class="active">
+                                                            <div class="product-color-item border rounded">
+                                                                <img src="{{asset('assets/images/product/img-7.png')}}" alt="" class="avatar-md">
+                                                            </div>
+                                                            <p>Black</p>
+                                                        </a>
+                                                        <a href="javascript: void(0);">
+                                                            <div class="product-color-item border rounded">
+                                                                <img src="{{asset('assets/images/product/img-7.png')}}" alt="" class="avatar-md">
+                                                            </div>
+                                                            <p>Blue</p>
+                                                        </a>
+                                                        <a href="javascript: void(0);">
+                                                            <div class="product-color-item border rounded">
+                                                                <img src="{{asset('assets/images/product/img-7.png')}}" alt="" class="avatar-md">
+                                                            </div>
+                                                            <p>Gray</p>
+                                                        </a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="row justify-content-end">
-                                            <div class="col-lg-10">
-                                                <button type="submit" class="btn btn-info">Create Project</button>
+                                        <!-- end row -->
+
+                                        <div class="mt-5">
+                                            <h5 class="mb-3">Specifications :</h5>
+
+                                            <div class="table-responsive">
+                                                <table class="table mb-0 table-bordered">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row" style="width: 400px;">Category</th>
+                                                            <td>Headphone</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">Client</th>
+                                                            <td>JBL</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">Timeline</th>
+                                                            <td>Black</td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
-                                      </form>
+                                        <!-- end Specifications -->
+
 
 
                                     </div>
                                 </div>
+                                <!-- end card -->
                             </div>
                         </div>
+                        <!-- end row -->
+
+
                         <!-- end row -->
 
                     </div> <!-- container-fluid -->
@@ -343,7 +377,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-sm-6">
-                                <script>document.write(new Date().getFullYear())</script> © MAWJA.
+                                <script>document.write(new Date().getFullYear())</script> © Mawja.
                             </div>
                             <div class="col-sm-6">
                                 <div class="text-sm-end d-none d-sm-block">
@@ -426,24 +460,8 @@
         <script src="{{asset('assets/libs/simplebar/simplebar.min.js')}}"></script>
         <script src="{{asset('assets/libs/node-waves/waves.min.js')}}"></script>
 
-        <!-- bootstrap datepicker -->
-        <script src="{{asset('assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
-
-        <!-- dropzone plugin -->
-        <script src="{{asset('assets/libs/dropzone/min/dropzone.min.js')}}"></script>
-
+        <!-- App js -->
         <script src="assets/js/app.js"></script>
-        <script type="text/javascript">
-        $( document ).ready(function() {
-            $('.js-example-basic-single').select2({
-              maximumSelectionLength: 1 ,
-
-            });
-            $('.js-example-basic-multiple').select2();
-
-            document.getElementById("rtl-mode-switch").trigger('click');
-          });
-        </script>
 
     </body>
 </html>
