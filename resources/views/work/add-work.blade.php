@@ -413,7 +413,7 @@
         <!-- dropzone plugin -->
         <script src="{{asset('assets/libs/dropzone/min/dropzone.min.js')}}"></script>
 
-        <script src="{{asset('assets/js/app.js')}}"></script>
+        <script src="assets/js/app.js"></script>
 
     </body>
 </html>

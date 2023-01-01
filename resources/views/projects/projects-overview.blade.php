@@ -302,7 +302,7 @@
                                             <table class="table align-middle table-nowrap">
                                                 <tbody>
                                                     <tr>
-                                                        <td style="width: 50px;"><img src="{{asset('assets/images/users/avatar-2.jpg')}}" class="rounded-circle avatar-xs" alt=""></td>
+                                                        <td style="width: 50px;"><img src="{{asset(Storage::url($projects->Worker->image))}}" class="rounded-circle avatar-xs" alt=""></td>
                                                         <td><h5 class="font-size-14 m-0"><a href="javascript: void(0);" class="text-dark">{{$projects->Worker->name}}</a></h5></td>
                                                         <td>
                                                             <div>
@@ -327,23 +327,28 @@
                                                         <td><h5 class="font-size-14 m-0"><a href="javascript: void(0);" class="text-dark">{{$projects->file}}</a></h5></td>
                                                         <td>
                                                             <div class="text-center">
-
-                                                                <a class="btn btn-outline-secondary btn-sm edit" title="Edit">
-                                                                    <i class="fas fa-pencil-alt"></i>
+                                                              <form class="" action="{{route('projects.destroy',[$projects->id])}}" method="post">
+                                                                @csrf
+                                                                @method('delete')
+                                                                <a href="/projects/{{$projects->id}}/edit" class="btn btn-outline-secondary btn-sm edit" title="Edit">
+                                                                  <i class="fas fa-pencil-alt"></i>
                                                                 </a>
                                                                 &nbsp;
-                                                                <a class="btn btn-outline-secondary btn-sm delete" title="Delete">
-                                                                    <i class="fas fa-trash-alt"></i>
-                                                                </a>
+                                                                <button class="btn btn-outline-secondary btn-sm delete" title="Delete" type="submit">
+                                                                  <i class="fas fa-trash-alt"></i>
+                                                                </button>
                                                                 &nbsp;
                                                                 <a href="javascript: void(0);" class="text-dark"><i class="bx bx-download h3 m-0" title="Download"></i></a>
+
+                                                              </form>
+
 
                                                             </div>
                                                         </td>
                                                     </tr>
 
 
-
+18-40
 
                                                 </tbody>
                                             </table>
@@ -406,14 +411,11 @@
 
                                                         </td>
                                                     </tr>
-
-
-
                                                 </tbody>
 
                                             </table>
                                             <div class="text-center mt-4 pt-2">
-                                                <a href="javascript: void(0);" class="btn btn-info btn-sm">  <i class="mdi mdi-plus me-1"></i>Add Work</a>
+                                                <a href="/add-work/{{$projects->id}}" class="btn btn-info btn-sm">  <i class="mdi mdi-plus me-1"></i>Add Work</a>
                                             </div>
                                         </div>
                                     </div>

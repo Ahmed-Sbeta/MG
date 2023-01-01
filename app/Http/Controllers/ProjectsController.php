@@ -73,8 +73,9 @@ class ProjectsController extends Controller
      */
     public function edit($id)
     {
+        $users = User::where('role','=','employee')->get();
         $projects = project::find($id);
-        return view('projects.',compact('order'));
+        return view('projects.projects-edit',compact('projects','users'));
     }
 
     /**
@@ -92,12 +93,14 @@ class ProjectsController extends Controller
         $project->employer_id = request('employee')[0];
         $project->start = request('startDate');
         $project->end = request('endDate');
-        $file = request()->file('file');
-        $name = $file->getClientOriginalName();
-        $name = str_replace(' ', '', $name);
-        $project->file = request()->file('file') ? request()->file('file')->storePubliclyAs('',$name) : null;
+        if(request('file')){
+          $file = request()->file('file');
+          $name = $file->getClientOriginalName();
+          $name = str_replace(' ', '', $name);
+          $project->file = request()->file('file') ? request()->file('file')->storePubliclyAs('',$name) : null;
+        }
         $project->save();
-        return redirect()->back()->with('success','project added successfuly');
+        return redirect()->back()->with('success','project updated successfuly');
     }
 
     /**
@@ -110,7 +113,7 @@ class ProjectsController extends Controller
     {
         $projects = project::find($id);
         $projects->delete();
-        return redirect()->back()->with('success','project deleted successfuly');
+        return redirect('/projects')->with('success','project deleted successfuly');
 
     }
 }
