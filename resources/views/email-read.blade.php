@@ -2,24 +2,24 @@
 <html lang="en">
 
     <head>
-
+        
         <meta charset="utf-8" />
         <title>Read Email | MAWJA</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesbrand" name="author" />
         <!-- App favicon -->
-        <link rel="shortcut icon" href="{{asset('assets/images/mawja22.png')}}">
+        <link rel="shortcut icon" href="assets/images/mawja22.png">
 
         <!-- Summernote css -->
-        <link href="{{asset('assets/libs/summernote/summernote-bs4.min.css')}}" rel="stylesheet" type="text/css" />
+        <link href="assets/libs/summernote/summernote-bs4.min.css" rel="stylesheet" type="text/css" />
 
         <!-- Bootstrap Css -->
-        <link href="{{asset('assets/css/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
+        <link href="assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
         <!-- Icons Css -->
-        <link href="{{asset('assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
+        <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
         <!-- App Css-->
-        <link href="{{asset('assets/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
+        <link href="assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
 
     </head>
 
@@ -30,7 +30,7 @@
         <!-- Begin page -->
         <div id="layout-wrapper">
 
-
+            
             <header id="page-topbar">
                 <div class="navbar-header">
                     <div class="d-flex">
@@ -60,17 +60,17 @@
                         </button>
 
                         <!-- App Search-->
+                      
 
-
-
+                        
                     </div>
 
                     <div class="d-flex">
 
+                       
+                        
 
-
-
-
+                       
 
                         <div class="dropdown d-none d-lg-inline-block ms-1">
                             <button type="button" class="btn header-item noti-icon waves-effect" data-bs-toggle="fullscreen">
@@ -159,7 +159,7 @@
                                 </div>
                                 <div class="p-2 border-top d-grid">
                                     <a class="btn btn-sm btn-link font-size-14 text-center" href="javascript:void(0)">
-                                        <i class="mdi mdi-arrow-right-circle me-1"></i> <span key="t-view-more">View More..</span>
+                                        <i class="mdi mdi-arrow-right-circle me-1"></i> <span key="t-view-more">View More..</span> 
                                     </a>
                                 </div>
                             </div>
@@ -170,12 +170,12 @@
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-1.jpg"
                                     alt="Header Avatar">
-                                <span class="d-none d-xl-inline-block ms-1" key="t-henry">Henry</span>
+                                <span class="d-none d-xl-inline-block ms-1" key="t-henry">Ahmed</span>
                                 <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <!-- item-->
-                                <a class="dropdown-item" href="#"><i class="bx bx-user font-size-16 align-middle me-1"></i> <span key="t-profile">Profile</span></a>
+                                <a class="dropdown-item" href="dashboard-profile.html"><i class="bx bx-user font-size-16 align-middle me-1"></i> <span key="t-profile">Profile</span></a>
                                 <a class="dropdown-item" href="#"><i class="bx bx-wallet font-size-16 align-middle me-1"></i> <span key="t-my-wallet">My Wallet</span></a>
                                 <a class="dropdown-item d-block" href="#"><span class="badge bg-success float-end">11</span><i class="bx bx-wrench font-size-16 align-middle me-1"></i> <span key="t-settings">Settings</span></a>
                                 <a class="dropdown-item" href="#"><i class="bx bx-lock-open font-size-16 align-middle me-1"></i> <span key="t-lock-screen">Lock screen</span></a>
@@ -195,10 +195,142 @@
             </header>
 
             <!-- ========== Left Sidebar Start ========== -->
-            @include('layout.sidebar')
+            <div class="vertical-menu">
+
+                <div data-simplebar class="h-100">
+
+                    <!--- Sidemenu -->
+                    <div id="sidebar-menu">
+                        <!-- Left Menu Start -->
+                        <ul class="metismenu list-unstyled" id="side-menu">
+                            <li class="menu-title" key="t-menu">Menu</li>
+
+                            <li>
+                                <a href="javascript: void(0);" class="waves-effect">
+                                    <i class="bx bx-home-circle"></i><span class="badge rounded-pill bg-info float-end">04</span>
+                                    <span key="t-dashboards">Dashboard</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="dashboard-profile.html" key="t-default">Profile</a></li>
+                                </ul>
+                            </li>
+
+                             
+                            <li class="menu-title" key="t-apps">Apps</li>
+
+                
+
+                            <li>
+                                <a href="javascript: void(0);" class="waves-effect">
+                                    <i class="bx bx-calendar"></i><span class="badge rounded-pill bg-success float-end">New</span>
+                                    <span key="t-dashboards">Calendars</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                     <li><a href="calendar-full.html" key="t-full-calendar">Full Calendar</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="apps-filemanager.html" class="waves-effect">
+                                    <i class="bx bx-file"></i>
+                                    <span class="badge rounded-pill bg-success float-end" key="t-new">New</span>
+                                    <span key="t-file-manager">File Manager</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                    <i class="bx bx-store"></i>
+                                    <span key="t-ecommerce">Orders</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="add-order.html">Add Order</a></li>
+                                    <li><a href="orders.html">Orders</a></li>
+                                     <li><a href="order-details.html">Order Details</a></li>
+                                     <li><a href="checkout.html">Checkout</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                    <i class="bx bx-envelope"></i>
+                                    <span key="t-email">Email</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="email-inbox.html" key="t-inbox">Inbox</a></li>
+                                    <li><a href="email-read.html" key="t-read-email">Read Email</a></li>
+                                     
+                                </ul>
+                            </li>
+
+                            <!-- <li>
+                                <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                    <i class="bx bx-receipt"></i>
+                                    <span key="t-invoices">Invoices</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="invoices-list.html" key="t-invoice-list">Invoice List</a></li>
+                                    <li><a href="invoices-detail.html" key="t-invoice-detail">Invoice Detail</a></li>
+                                </ul>
+                            </li> -->
+
+                            <li>
+                                <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                    <i class="bx bx-briefcase-alt-2"></i>
+                                    <span key="t-projects">Projects</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="projects-grid.html" key="t-p-grid">Projects Grid</a></li>
+                                    <li><a href="projects-list.html" key="t-p-list">Projects List</a></li>
+                                    <li><a href="projects-overview.html" key="t-p-overview">Project Overview</a></li>
+                                    <li><a href="projects-create.html" key="t-create-new">Create New</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                    <i class="bx bx-task"></i>
+                                    <span key="t-tasks">Tasks</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="tasks-list.html" key="t-task-list">Task List</a></li>
+                                    <li><a href="tasks-kanban.html" key="t-kanban-board">Kanban Board</a></li>
+                                    <li><a href="tasks-create.html" key="t-create-task">Create Task</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                    <i class="bx bxs-user-detail"></i>
+                                    <span key="t-contacts">Contacts</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="add-member.html">Add new Member</a></li>
+                                    <li><a href="contacts-list.html" key="t-user-list">Users List</a></li>
+                                    <!-- <li><a href="contacts-profile.html" key="t-profile">Profile</a></li> -->
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="javascript: void(0);" class="waves-effect">
+                                    <span class="badge rounded-pill bg-success float-end" key="t-new">New</span>
+                                    <i class="bx bx-detail"></i>
+                                    <span key="t-blog">Blog</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="blog-list.html" key="t-blog-list">Blog List</a></li>
+                                    <li><a href="blog-grid.html" key="t-blog-grid">Blog Grid</a></li>
+                                    <li><a href="blog-details.html" key="t-blog-details">Blog Details</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Sidebar -->
+                </div>
+            </div>
             <!-- Left Sidebar End -->
 
-
+            
 
             <!-- ============================================================== -->
             <!-- Start right Content here -->
@@ -234,15 +366,15 @@
                                         Compose
                                     </button>
                                     <div class="mail-list mt-4">
-                                        <a href="javascript: void(0);" class="active"><i class="mdi mdi-email-outline me-2"></i> Inbox <span class="ms-1 float-end">(18)</span></a>
+                                        <a href="javascript: void(0);" class="active"><i class="mdi mdi-email-outline me-2"></i> Inbox <span class="ms-1 float-end">(2)</span></a>
                                         <a href="javascript: void(0);"><i class="mdi mdi-star-outline me-2"></i>Starred</a>
-                                        <a href="javascript: void(0);"><i class="mdi mdi-diamond-stone me-2"></i>Important</a>
-                                        <a href="javascript: void(0);"><i class="mdi mdi-file-outline me-2"></i>Draft</a>
+                                        <!-- <a href="javascript: void(0);"><i class="mdi mdi-diamond-stone me-2"></i>Important</a> -->
+                                        <!-- <a href="javascript: void(0);"><i class="mdi mdi-file-outline me-2"></i>Draft</a> -->
                                         <a href="javascript: void(0);"><i class="mdi mdi-email-check-outline me-2"></i>Sent Mail</a>
-                                        <a href="javascript: void(0);"><i class="mdi mdi-trash-can-outline me-2"></i>Trash</a>
+                                        <!-- <a href="javascript: void(0);"><i class="mdi mdi-trash-can-outline me-2"></i>Trash</a> -->
                                     </div>
 
-                                    <h6 class="mt-4">Labels</h6>
+                                    <!-- <h6 class="mt-4">Labels</h6>
 
                                     <div class="mail-list mt-1">
                                         <a href="javascript: void(0);"><span class="mdi mdi-arrow-right-drop-circle text-info float-end"></span>Theme Support</a>
@@ -250,9 +382,9 @@
                                         <a href="javascript: void(0);"><span class="mdi mdi-arrow-right-drop-circle text-primary float-end"></span>Social</a>
                                         <a href="javascript: void(0);"><span class="mdi mdi-arrow-right-drop-circle text-danger float-end"></span>Friends</a>
                                         <a href="javascript: void(0);"><span class="mdi mdi-arrow-right-drop-circle text-success float-end"></span>Family</a>
-                                    </div>
+                                    </div> -->
 
-                                    <h6 class="mt-4">Chat</h6>
+                                    <!-- <h6 class="mt-4">Chat</h6>
 
                                     <div class="mt-2">
                                         <a href="javascript: void(0);" class="d-flex">
@@ -295,7 +427,7 @@
                                             </div>
                                         </a>
 
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <!-- End Left sidebar -->
 
@@ -309,7 +441,7 @@
                                                 <button type="button" class="btn btn-primary waves-light waves-effect"><i class="fa fa-exclamation-circle"></i></button>
                                                 <button type="button" class="btn btn-primary waves-light waves-effect"><i class="far fa-trash-alt"></i></button>
                                             </div>
-                                            <div class="btn-group me-2 mb-2 mb-sm-0">
+                                            <!-- <div class="btn-group me-2 mb-2 mb-sm-0">
                                                 <button type="button" class="btn btn-primary waves-light waves-effect" data-bs-toggle="dropdown" aria-expanded="false">
                                                     <i class="fa fa-folder"></i> <i class="mdi mdi-chevron-down ms-1"></i>
                                                 </button>
@@ -341,17 +473,17 @@
                                                     <a class="dropdown-item" href="#">Add Star</a>
                                                     <a class="dropdown-item" href="#">Mute</a>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                         </div>
 
                                         <div class="card-body">
                                             <div class="d-flex mb-4">
                                                 <div class="flex-shrink-0 me-3">
-                                                    <img class="rounded-circle avatar-sm" src="assets/images/users/avatar-2.jpg" alt="Generic placeholder image">
+                                                    <img class="rounded-circle avatar-sm" src="assets/images/p.jpg" alt="Generic placeholder image">
                                                 </div>
                                                 <div class="flex-grow-1">
-                                                    <h5 class="font-size-14 mt-1">Humberto D. Champion</h5>
-                                                    <small class="text-muted">support@domain.com</small>
+                                                    <h5 class="font-size-14 mt-1">Mohamed Elgmati</h5>
+                                                    <small class="text-muted">Elgmati@mawja.ly</small>
                                                 </div>
                                             </div>
 
@@ -383,7 +515,8 @@
                                                 </div>
                                             </div>
 
-                                            <a href="javascript: void(0);" class="btn btn-secondary waves-effect mt-4"><i class="mdi mdi-reply"></i> Reply</a>
+                                            <!-- Reply -->
+                                            <!-- <a href="javascript: void(0);" class="btn btn-secondary waves-effect mt-4"><i class="mdi mdi-reply"></i> Reply</a> -->
                                         </div>
 
                                     </div>
@@ -457,7 +590,7 @@
         <div class="right-bar">
             <div data-simplebar class="h-100">
                 <div class="rightbar-title d-flex align-items-center px-3 py-4">
-
+            
                     <h5 class="m-0 me-2">Settings</h5>
 
                     <a href="javascript:void(0);" class="right-bar-toggle ms-auto">
@@ -478,7 +611,7 @@
                         <input class="form-check-input theme-choice" type="checkbox" id="light-mode-switch" checked>
                         <label class="form-check-label" for="light-mode-switch">Light Mode</label>
                     </div>
-
+    
                     <div class="mb-2">
                         <img src="assets/images/layouts/layout-2.jpg" class="img-thumbnail" alt="layout images">
                     </div>
@@ -486,7 +619,7 @@
                         <input class="form-check-input theme-choice" type="checkbox" id="dark-mode-switch">
                         <label class="form-check-label" for="dark-mode-switch">Dark Mode</label>
                     </div>
-
+    
                     <div class="mb-2">
                         <img src="assets/images/layouts/layout-3.jpg" class="img-thumbnail" alt="layout images">
                     </div>
@@ -503,7 +636,7 @@
                         <label class="form-check-label" for="dark-rtl-mode-switch">Dark RTL Mode</label>
                     </div>
 
-
+            
                 </div>
 
             </div> <!-- end slimscroll-menu-->
@@ -514,20 +647,20 @@
         <div class="rightbar-overlay"></div>
 
         <!-- JAVASCRIPT -->
-        <script src="{{asset('assets/libs/jquery/jquery.min.js')}}"></script>
-        <script src="{{asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-        <script src="{{asset('assets/libs/metismenu/metisMenu.min.js')}}"></script>
-        <script src="{{asset('assets/libs/simplebar/simplebar.min.js')}}"></script>
-        <script src="{{asset('assets/libs/node-waves/waves.min.js')}}"></script>
-
+        <script src="assets/libs/jquery/jquery.min.js"></script>
+        <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/libs/metismenu/metisMenu.min.js"></script>
+        <script src="assets/libs/simplebar/simplebar.min.js"></script>
+        <script src="assets/libs/node-waves/waves.min.js"></script>
+        
         <!--tinymce js-->
-        <script src="{{asset('assets/libs/tinymce/tinymce.min.js')}}"></script>
+        <script src="assets/libs/tinymce/tinymce.min.js"></script>
 
         <!-- email editor init -->
-        <script src="{{asset('assets/js/pages/email-editor.init.js')}}"></script>
+        <script src="assets/js/pages/email-editor.init.js"></script>
 
         <!-- App js -->
-        <script src="{{asset('assets/js/app.js')}}"></script>
+        <script src="assets/js/app.js"></script>
 
     </body>
 
